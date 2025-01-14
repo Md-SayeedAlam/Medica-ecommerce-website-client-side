@@ -4,7 +4,7 @@ const useMedicineCategory = () => {
     const [categories,setCategories] = useState([])
     const [loading,setLoading] = useState(true)
     useEffect(()=>{
-        fetch('/medicine.json')
+        fetch('http://localhost:5000/medicine')
         .then(res=>res.json())
         .then(data=>{
             setCategories(data)

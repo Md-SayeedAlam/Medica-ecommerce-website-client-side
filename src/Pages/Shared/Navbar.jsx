@@ -37,8 +37,8 @@ const Navbar = () => {
         <ul
           tabIndex={0}
           className="menu dropdown-content bg-base-100 rounded-box z-[1] mt-4 w-52 p-2 shadow">
-          <li><a>বাংলা</a></li>
-          <li><a>English</a></li>
+          <li>বাংলা</li>
+          <li>English</li>
         </ul>
       </div>
         </NavLink>
