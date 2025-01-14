@@ -1,0 +1,228 @@
+[
+    {
+        
+        "name": "Zovirax",
+        "generic_name":"acyclovir capsule",
+        "description": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://i.ibb.co.com/0D3PW9h/zovirax-tablets-200-mg-1597733908.jpg",
+        "category": "capsule",
+        "company":"Zovi Pharmaceuticals Ltd.",
+        "unit_price": 14.7,
+        "discount":0
+    },
+    {
+        
+        "name": "Mygest",
+        "generic_name":"Progesterone Micronized",
+        "description": "Mygest 200mg Capsule is a natural female sex hormone, progesterone. It is used to treat menstrual and pregnancy-related issues that are caused due to hormonal imbalance.",
+        "image": "https://i.ibb.co.com/VQPM0Qc/mygest.jpg",
+        "category": "capsule",
+        "company":"Zovi Pharmaceuticals Ltd.",
+        "unit_price": 15,
+        "discount":0
+    },
+    {
+        
+        "name": "Doxicap",
+        "generic_name":"Doxycycline Hydrochloride",
+        "description":"Doxicap is a highly active broad-spectrum antibiotic of tetracycline group.",
+        "image": "https://i.ibb.co.com/Wc272D4/doxi.webp",
+        "category": "capsule",
+        "company":"Renata Limited",
+        "unit_price":2.20,
+        "discount":0
+    },
+    {
+        
+        "name": "Seebri",
+        "generic_name":"Glycopyrronium Bromide",
+        "description":"Seebri Breezhaler is indicated as a once-daily maintenance bronchodilator treatment to relieve symptoms of patients with chronic obstructive pulmonary disease (COPD).",
+        "image": "https://i.ibb.co.com/02GRGH0/seberi.webp",
+        "category": "capsule",
+        "company":"Novartis (Bangladesh) Ltd.",
+        "unit_price": 99.50,
+        "discount":2
+    },
+    {
+        
+        "name": "Dilgly UniCap",
+        "generic_name":"Glycopyrronium Bromide",
+        "description": "Dilgly UniCap inhalation capsule is indicated as a once-daily maintenance bronchodilator treatment to relieve symptoms of patients with chronic obstructive pulmonary disease (COPD).",
+        "image": "https://i.ibb.co.com/Czn6KW8/digly.webp",
+        "category": "capsule",
+        "company":"UniMed UniHealth Pharmaceuticals Ltd.",
+        "unit_price": 50,
+        "discount":2
+    },
+    {
+        
+        "name": "Lotrel",
+        "generic_name":"Benazepril capsule",
+        "description": "LOTREL contains 2 prescription medicines that work together to lower blood pressure: amlodipine besylate, a calcium channel blocker, and benazepril hydrochloride, an ACE inhibitor. ",
+        "image": "https://i.ibb.co.com/bWh7K1z/lotrel.jpg",
+        "category": "capsule",
+        "company":"Lotrel Pharmaceuticals Ltd.",
+        "unit_price": 14.7,
+        "discount":0
+    },
+    {
+        
+        "name": "Clarizol",
+        "generic_name":"Clotrimazole",
+        "description": "Clarizol is a broad-spectrum antifungal agent that is used for the treatment of dermal infections caused by various species of pathogenic dermatophytes, yeasts, moulds and bacteroids. ",
+        "image": "https://i.ibb.co.com/rx0yvwx/clarizol.webp",
+        "category": "eyedrop",
+        "company":"Incepta Pharmaceuticals Ltd.",
+        "unit_price":80,
+        "discount":0
+    },
+    {
+        
+        "name": "Eyefen",
+        "generic_name":"Bromfenac Sodium",
+        "description": "Eyefen Eye Drop is composed of Flurbiprofen, an ophthalmic anti-inflammatory agent",
+        "image": "https://i.ibb.co.com/NNFS018/eyefen.jpg",
+        "category": "eyedrop",
+        "company":"ACME Laboratories Ltd.",
+        "unit_price":100,
+        "discount":5
+    },
+   
+    {
+        
+        "name": "Eyerin",
+        "generic_name":"Povidone Iodine",
+        "description": "Eyerin is used for the symptomatic treatment of dry eye conditions including keratoconjunctivitis sicca.",
+        "image": "https://i.ibb.co.com/nrFFzG3/eyrin.webp",
+        "category": "eyedrop",
+        "company":"OSL Pharma Limited",
+        "unit_price":80,
+        "discount":0
+    },
+    {
+        
+        "name": "Inj. K MM",
+        "generic_name":"Phytomenadione",
+        "description": "The anticoagulant should be withdrawn and an IV injection of Inj K MM given slowly (in at least 30 seconds) in a dose of 10-20 mg (1-2, 10 mg ampoules).",
+        "image": "https://i.ibb.co.com/YQcfcBt/inj-k-mm.webp",
+        "category": "injection",
+        "company":"Incepta Pharmaceuticals Ltd.",
+        "unit_price":19.89,
+        "discount":0
+    },
+    {
+        
+        "name": "Supotaria",
+        "generic_name":"Glycopyrronium Bromide",
+        "description": "Adults: 0.2 mg to 0.4 mg intravenously or intramuscularly before the induction of anesthesia",
+        "image": "https://i.ibb.co.com/yNQZgvh/supotaria.jpg",
+        "category": "injection",
+        "company":"Incepta Pharmaceuticals Ltd.",
+        "unit_price":90,
+        "discount":2
+    },
+    {
+        
+        "name": "Windel",
+        "generic_name":"Salbutamol",
+        "description": "Windel 0.5 injection: Each ampoule contains 1 ml sterile isotonic solution for injection of Salbutamol Sulphate BP equivalent to Salbutamol 0.5 mg.",
+        "image": "https://i.ibb.co.com/0tMDKMD/Windel-Injection.jpg",
+        "category": "injection",
+        "company":"Incepta Pharmaceuticals Ltd.",
+        "unit_price":120,
+        "discount":0
+    },
+    {
+        
+        "name": "Syrup Zinc",
+        "generic_name":"Zinc Sulfate Monohydrate",
+        "description": "Syrup Zinc-200 10 mg/5 ml is indicated in zinc deficiency and/or zinc losing conditions",
+        "image": "https://i.ibb.co.com/z8xpjM3/zinc.jpg",
+        "category": "syrup",
+        "company":"Ad-din Pharmaceuticals Ltd.",
+        "unit_price":28,
+        "discount":0
+    },
+   
+    {
+        
+        "name": "Adolef",
+        "generic_name":"Herbal cough syrup [Vasakarista]",
+        "description": "This syrup is a preparation of a combination of effective herbs which is helpful in all types of cough & cold.",
+        "image": "https://i.ibb.co.com/Qfc1MVb/adolef.webp",
+        "category": "syrup",
+        "company":"Opsonin Herbal & Nutraceuticals Ltd.",
+        "unit_price":28,
+        "discount":0
+    },
+   
+    {
+        
+        "name": "Acme's Basok",
+        "generic_name":"Herbal cough syrup [Vasakarista]",
+        "description": "ACME'S BASOK syrup relieves allergic and dry imitable cough. It liquefies phlegm.",
+        "image": "https://i.ibb.co.com/4Ym9HcR/ACME-Basok-100-ml.png",
+        "category": "syrup",
+        "company":"ACME Laboratories Ltd.",
+        "unit_price":70,
+        "discount":0
+    },
+    {
+        
+        "name": "Twindopa ",
+        "generic_name":"Levodopa + Carbidopa",
+        "description": "Twindopa tablet is indicated for the treatment of Parkinson's disease and syndrome",
+        "image": "https://i.ibb.co.com/fn08drq/twindopa.webp",
+        "category": "tablet",
+        "company":"Incepta Pharmaceuticals Ltd.",
+        "unit_price": 10,
+        "discount":0
+    },
+    {
+        
+        "name": "Tabis Plus",
+        "generic_name":"Bisoprolol Fumarate + Hydrochlorothiazide",
+        "description": "Tabis Plus tablet is indicated in the treatment of Hypertension.",
+        "image": "https://i.ibb.co.com/QbWP49x/tabis-plus.jpg",
+        "category": "tablet",
+        "company":"Incepta Pharmaceuticals Ltd.",
+        "unit_price": 6,
+        "discount":3
+    },
+   
+    {
+        
+        "name": "Riovera",
+        "generic_name":"Ivermectin",
+        "description": "Riovera is indicated for the treatment of onchocerciasis due to the nematode parasite Onchocerca volvulus.",
+        "image": "https://i.ibb.co.com/qMgt7Q2/riovera.webp",
+        "category": "tablet",
+        "company":"Healthcare Pharmaceuticals Ltd.",
+        "unit_price": 10,
+        "discount":0
+    },
+    {
+        
+        "name": "Vita D3",
+        "generic_name":"Cholecalciferol [Vitamin D3]",
+        "description": "Vitamin D3 is essential for the effective calcium and phosphate absorption required for healthy bones and teeth, preventing rickets, osteomalacia and osteoporosis.",
+        "image": "https://i.ibb.co.com/TtvpcfJ/vita-d3.jpg",
+        "category": "vitamin",
+        "company":"Renata Limited",
+        "unit_price": 20,
+        "discount":0
+    },
+    {
+        
+        "name": "E-Cap Plus",
+        "generic_name":"Vitamin C + Vitamin E",
+        "description": "Vitamin C: Necessary for collagen formation and tissue repair,Vitamin E plays a role in protecting red blood cells against hemolysis",
+        "image": "https://i.ibb.co.com/m4HMLpQ/e-cap-plus.jpg",
+        "category": "vitamin",
+        "company":"Drug International Ltd.",
+        "unit_price": 5,
+        "discount":0
+    }
+   
+    
+]
