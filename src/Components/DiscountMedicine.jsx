@@ -6,11 +6,12 @@ import { Pagination } from "swiper/modules";
 import useMedicineCategory from '../Hookos/useMedicineCategory';
 import Card from './Card';
 
+
 const DiscountMedicine = () => {
     const [categories] = useMedicineCategory()
-
     const items = categories.filter(item=>item.discount > 0)
-    
+
+  
 
     return (
         <div>

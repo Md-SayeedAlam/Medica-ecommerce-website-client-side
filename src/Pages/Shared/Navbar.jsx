@@ -6,6 +6,7 @@ import useCart from "../../Hookos/useCart";
 
 const Navbar = () => {
 const [cart] = useCart()
+const totalPrice = cart.reduce((total,item)=>total + item.unit_price,0)
 const {user,logOut} = UseAuth()
 const handleLogOut = () => {
   logOut()
@@ -137,9 +138,9 @@ const handleLogOut = () => {
           >
             <div className="card-body">
               <span className="text-lg font-bold">{cart.length} Items</span>
-              <span className="text-info">Subtotal: $999</span>
+              <span className="text-info">Total Price : ${totalPrice}</span>
               <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
+               <Link to='/dashboard/myCart' > <button className="btn  bg-green-200 btn-block">View cart</button></Link>
               </div>
             </div>
           </div>
@@ -168,7 +169,7 @@ const handleLogOut = () => {
               </Link>
             </li>
             <li>
-              <Link>Dashboard</Link>
+              <Link to='/dashboard'>Dashboard</Link>
             </li>
             <li>
               <button onClick={handleLogOut}>Logout</button>

@@ -15,6 +15,10 @@ import Login from "../Pages/Register & Login/Login";
 import Shop from "../Components/Shop";
 import Error from "../Error/Error";
 
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import PrivateRoute from './../PrivateRoute/PrivateRoute';
+import Cart from "../Pages/Dashboard/Cart";
+
 
  export const router = createBrowserRouter([
     {
@@ -62,6 +66,18 @@ import Error from "../Error/Error";
             path:'/login',
             element:<Login></Login>
         },
+       
       ]
     },
+    {
+        path:'dashboard',
+        element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        errorElement:<Error></Error>,
+        children:[
+            {
+                path:'myCart',
+                element:<Cart></Cart>
+            },
+        ]
+    }
   ]);

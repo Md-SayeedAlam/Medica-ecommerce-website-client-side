@@ -42,10 +42,11 @@ const Shop = () => {
                 image,
                 unit_price,
                 discount,
+                company
 
             }
 
-            axiosSecure.post('http://localhost:5000/carts',cartItem)
+            axiosSecure.post('/carts',cartItem)
             .then(res=>{
                 // console.log(res.data)
           if(res.data.insertedId){
