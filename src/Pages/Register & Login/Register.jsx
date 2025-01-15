@@ -29,7 +29,7 @@ const navigate = useNavigate();
         email: user.email,
         displayName: user.displayName || "Anonymous",
         photoURL: user.photoURL || "",
-        role: "user", // Default role for social login
+        role: "User", // Default role for social login
       };
 
       // Send a request to your server to save the user in MongoDB

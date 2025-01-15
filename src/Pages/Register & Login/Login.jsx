@@ -14,6 +14,7 @@ const Login = () => {
   const location = useLocation();
   const {googleSignIn,signIn,setUser}=UseAuth();
   const axiosPublic= useAxiosPublic()
+const  from = location.state?.from?.pathname || '/'
 
  const handleSubmit = e =>{
     e.preventDefault();
@@ -34,7 +35,7 @@ const Login = () => {
         autoClose: 2000,})
     //   navigate('/')
       
-      navigate(location?.state ? location.state  : "/");
+    navigate(from,{replace:true})
     })
     .catch(err=>{
       
@@ -52,7 +53,7 @@ const Login = () => {
         email: user.email,
         displayName: user.displayName || "Anonymous",
         photoURL: user.photoURL || "",
-        role: "user", // Default role for social login
+        role: "User", // Default role for social login
       };
 
       // Send a request to your server to save the user in MongoDB
@@ -75,7 +76,7 @@ const Login = () => {
         autoClose: 2000,
       });
   
-      navigate(location?.state ? location.state : "/");
+      navigate(from,{replace:true})
     } catch (error) {
       console.error("ERROR:", error.message);
   

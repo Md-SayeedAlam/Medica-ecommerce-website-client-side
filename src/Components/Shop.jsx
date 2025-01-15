@@ -2,11 +2,21 @@ import React, { useState } from 'react';
 import useMedicineCategory from '../Hookos/useMedicineCategory';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Modal from './Modal';
+import UseAuth from '../Hookos/UseAuth';
+import Swal from 'sweetalert2';
+
+import useAxiosSecure from '../Hookos/useAxiosSecure';
+import useCart from '../Hookos/useCart';
 
 const Shop = () => {
     const [categories] = useMedicineCategory()
+    const location = useLocation()
+    const navigate = useNavigate()
+    const {user} = UseAuth()
+    const [,refetch] = useCart()
+    const axiosSecure = useAxiosSecure()
     
           const [selectedItem, setSelectedItem] = useState(null); // To store the selected item
           const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
@@ -22,7 +32,53 @@ const Shop = () => {
           };
         
           const handleAddToCart = item =>{
-            console.log(item)
+            const {name,generic_name,category,company,image,unit_price,discount,description,_id} = item
+           if(user && user.email){
+            
+            const cartItem = {
+                medicineId : _id,
+                email:user.email,
+                name,
+                image,
+                unit_price,
+                discount,
+
+            }
+
+            axiosSecure.post('http://localhost:5000/carts',cartItem)
+            .then(res=>{
+                // console.log(res.data)
+          if(res.data.insertedId){
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: `${name} has been saved to cart`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+            // refetch cart to update the cart items count
+           refetch()
+          }
+            })
+
+           }
+           else{
+            Swal.fire({
+                title: "You are not logged in",
+                text: "Please login to add to the cart",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, Login"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                // send the user to the login page
+                navigate("/login", { state: { from: location } });
+               
+                }
+              });                                                                   
+           }
           }
 
 
