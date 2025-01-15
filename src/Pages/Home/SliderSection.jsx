@@ -4,16 +4,21 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import useMedicineCategory from "../../Hookos/useMedicineCategory";
 
 const SliderSection = () => {
   const [slides, setSlides] = useState([]);
-
+  const [categories] = useMedicineCategory()
   useEffect(() => {
-    fetch("http://localhost:5000/medicine")
-      .then((res) => res.json())
-      .then((data) => setSlides(data))
-      .catch((err) => console.error("Error fetching slides:", err));
-  }, []);
+    setSlides(categories);
+  }, [categories]);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/medicine")
+  //     .then((res) => res.json())
+  //     .then((data) => setSlides(data))
+  //     .catch((err) => console.error("Error fetching slides:", err));
+  // }, []);
 
   return (
     <div className="my-2">

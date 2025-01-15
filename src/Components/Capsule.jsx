@@ -8,6 +8,7 @@ import useMedicineCategory from "../Hookos/useMedicineCategory";
 const Capsule = () => {
     const [categories] = useMedicineCategory()
     const capsule = categories.filter((item) => item.category === "capsule");
+    
 
   const [selectedItem, setSelectedItem] = useState(null); // To store the selected item
   const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
@@ -69,6 +70,9 @@ const Capsule = () => {
             </tr>
           </thead>
           <tbody>
+
+          {/* capsule */}
+
             {capsule && capsule.length > 0 ? (
               capsule.map((item, index) => (
                 <tr key={item._id}>
@@ -114,6 +118,7 @@ const Capsule = () => {
                 </td>
               </tr>
             )}
+
           </tbody>
         </table>
       </div>

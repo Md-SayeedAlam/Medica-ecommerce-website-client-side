@@ -1,14 +1,32 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import UseAuth from "../../Hookos/UseAuth";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+
+const {user,logOut} = UseAuth()
+const handleLogOut = () => {
+  logOut()
+    .then(() => {
+      // console.log("logged out");
+      toast.success('Logout successful' ,{position: "top-center",
+        autoClose: 2000,})
+    })
+    .catch((error) => {
+      // console.log("ERROR",error);
+      toast.error('Logout failed' ,{position: "top-center",
+        autoClose: 2000,})
+    });
+};
+
   const list = (
     <>
       <li>
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "bg-green-200 text-green-500 px-2 py-1" : "text-black"
+            isActive ? "bg-green-200 text-green-500" : "text-black bg-gray-300"
           }
         >
           Home
@@ -17,9 +35,9 @@ const Navbar = () => {
 
       <li>
         <NavLink
-          
+          to='/shop'
           className={({ isActive }) =>
-            isActive ? "bg-green-200 text-green-500 px-2 py-1" : "text-black"
+            isActive ? "bg-green-200 text-green-500 " : "text-black bg-gray-300"
           }
         >
           Shop
@@ -28,7 +46,7 @@ const Navbar = () => {
 
       <li>
         <NavLink  className={({ isActive }) =>
-            isActive ? "bg-green-200 text-green-500 px-2 py-1" : "text-black"
+            isActive ? "bg-green-200 text-green-500 " : "text-black bg-gray-300"
           }>
            {/* language dropdown */}
 
@@ -85,15 +103,13 @@ const Navbar = () => {
 
 
 
-      <div className="navbar-end">
-        <a className="btn btn-xs hover:bg-green-200 bg-green-100 text-green-500 rounded-full">
-          Join Us
-        </a>
-      </div>
+    {
+      user ? 
+      <>
+       {/* Cart and User logo */}
 
-      {/* Cart and User logo */}
-
-      <div className="flex-none">
+       <div className="navbar-end">
+       <div className="flex justify-center items-center">
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">
@@ -135,8 +151,8 @@ const Navbar = () => {
           >
             <div className="w-10 rounded-full">
               <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                alt="user Photo"
+                src={user.photoURL}
               />
             </div>
           </div>
@@ -154,11 +170,27 @@ const Navbar = () => {
               <Link>Dashboard</Link>
             </li>
             <li>
-              <a>Logout</a>
+              <button onClick={handleLogOut}>Logout</button>
             </li>
           </ul>
         </div>
       </div>
+       </div>
+      
+       </>
+      
+      : 
+      
+      <>  
+      <div className="navbar-end">
+      <Link to='/login' className="btn border-green-500 hover:bg-green-200 bg-green-100 text-green-500 rounded-full">
+        Join Us
+      </Link>
+    </div> 
+    </>
+    }
+
+     
     </div>
   );
 };

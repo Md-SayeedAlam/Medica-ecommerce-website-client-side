@@ -10,16 +10,25 @@ import Syrup from "../Components/Syrup";
 import Tablet from "../Components/Tablet";
 import Vitamin from "../Components/Vitamin";
 import Injection from "../Components/Injection";
+import Register from "../Pages/Register & Login/Register";
+import Login from "../Pages/Register & Login/Login";
+import Shop from "../Components/Shop";
+import Error from "../Error/Error";
 
 
  export const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement:<Error></Error>,
       children:[
         {
             path:'/',
             element:<Home></Home>
+        },
+        {
+            path:'/shop',
+            element:<Shop></Shop>
         },
         {
             path:'/capsule',
@@ -44,6 +53,14 @@ import Injection from "../Components/Injection";
         {
             path:'/injection',
             element:<Injection></Injection>
+        },
+        {
+            path:'/register',
+            element:<Register></Register>
+        },
+        {
+            path:'/login',
+            element:<Login></Login>
         },
       ]
     },
