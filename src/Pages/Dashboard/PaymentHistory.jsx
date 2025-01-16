@@ -1,16 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useRef } from 'react';
 import useAxiosSecure from '../../Hookos/useAxiosSecure';
 import UseAuth from '../../Hookos/UseAuth';
 import useCart from '../../Hookos/useCart';
+import jsPDF from 'jspdf';
 
+import "jspdf-autotable";
+import useAxiosPublic from '../../Hookos/useAxiosPublic';
 const PaymentHistory = () => {
 
 
     const { user } = UseAuth();
     const [cart] = useCart()
     const axiosSecure = useAxiosSecure();
-
+    const axiosPublic = useAxiosPublic()
+    const printRef = useRef(); // For printing functionality
 
     
     
@@ -18,7 +22,7 @@ const PaymentHistory = () => {
       queryKey: ["users"],
       
       queryFn: async () => {
-        const res = await axiosSecure.get(
+        const res = await axiosPublic.get(
           `/users/api/${user?.email}`
   
         );
@@ -43,6 +47,38 @@ const PaymentHistory = () => {
     });
 
 
+
+
+    const generatePDF = () => {
+      const doc = new jsPDF();
+      doc.text("Invoice", 20, 10); 
+      doc.addImage(user.photoURL, "JPEG", 170, 10, 20, 20); 
+      doc.text(`User Name: ${user.displayName}`, 20, 30);
+      doc.text(`User Email: ${user.email}`, 20, 40);
+      doc.text(`Role: ${users.role}`, 20, 50);
+  
+      // Add payment data
+      const tableColumn = ["No.", "Price", "Transaction ID", "Status"];
+      const tableRows = payments.map((payment, index) => [
+        index + 1,
+        `$${payment.price}`,
+        payment.transactionId,
+        payment.status,
+      ]);
+  
+      doc.autoTable({
+        head: [tableColumn],
+        body: tableRows,
+        startY: 60,
+      });
+  
+      doc.save("invoice.pdf");
+    };
+
+
+
+
+
     return (
         <div className='my-5'>
         <h2 className="text-2xl text-center uppercase">Total Payments:{payments.length} </h2>
@@ -51,7 +87,7 @@ const PaymentHistory = () => {
 
         <div className='flex flex-col justify-center items-center gap-5 my-10'>
             <h2 className='text-xl'>Your Information</h2>
-            <img className='w-10' src={user.photoURL} alt="" />
+            <img className='w-10 rounded-full' src={user.photoURL} alt="" />
             <h2 className=''>Role : {users.role}</h2>
         </div>
 
@@ -59,13 +95,7 @@ const PaymentHistory = () => {
 
 
 
-
-
-
-
-
-
-        <div className="w-full min-h-screen">
+        <div ref={printRef} className="w-full">
           <table className="table-auto w-full border border-gray-200">
             {/* head */}
             <thead>
@@ -90,6 +120,27 @@ const PaymentHistory = () => {
             </tbody>
           </table>
         </div>
+
+
+        <div className="flex justify-center gap-4 mt-5">
+        <button
+          onClick={() => window.print()}
+         
+          className="btn bg-blue-500 hover:bg-blue-600 text-white"
+        >
+          Print Invoice
+        </button>
+        <button
+          onClick={generatePDF}
+          className="btn bg-green-500 hover:bg-green-600 text-white"
+        >
+          Download PDF
+        </button>
+      </div>
+
+
+
+
       </div>
     );
 };
