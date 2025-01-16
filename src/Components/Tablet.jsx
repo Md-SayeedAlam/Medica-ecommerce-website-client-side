@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import { Helmet } from "react-helmet-async";
 import useMedicineCategory from "../Hookos/useMedicineCategory";
@@ -16,6 +16,7 @@ const Tablet = () => {
     const navigate = useNavigate()
     const {user} = UseAuth()
     const [,refetch] = useCart()
+    const location = useLocation()
     const axiosSecure = useAxiosSecure()
           const [selectedItem, setSelectedItem] = useState(null); // To store the selected item
           const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility

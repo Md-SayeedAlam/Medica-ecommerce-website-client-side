@@ -27,8 +27,8 @@ const navigate = useNavigate();
     try {
       const userData = {
         email: user.email,
-        displayName: user.displayName || "Anonymous",
-        photoURL: user.photoURL || "",
+        name: user.displayName || "Anonymous",
+        image: user.photoURL || "",
         role: "User", // Default role for social login
       };
 

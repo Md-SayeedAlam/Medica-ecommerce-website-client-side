@@ -51,14 +51,17 @@ const  from = location.state?.from?.pathname || '/'
     try {
       const userData = {
         email: user.email,
-        displayName: user.displayName || "Anonymous",
-        photoURL: user.photoURL || "",
+        name: user.displayName || "Anonymous",
+        image: user.photoURL || "",
         role: "User", // Default role for social login
       };
 
       // Send a request to your server to save the user in MongoDB
+
       const res = await axiosPublic.post("/users", userData);
+
       console.log("User role set or verified:", res.data);
+      
     } catch (error) {
       console.error("Error setting user role:", error);
     }
