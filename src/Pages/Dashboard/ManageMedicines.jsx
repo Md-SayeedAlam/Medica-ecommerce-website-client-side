@@ -231,10 +231,10 @@ const ManageMedicines = () => {
                   {...register("category",{required:true})}
                 //   required
                 >
-                  <option value="Capsule">Capsule</option>
-                  <option value="Eye Drop">Eye Drop</option>
-                  <option value="Injection">Injection</option>
-                  <option value="Syrup">Syrup</option>
+                  <option value="capsule">Capsule</option>
+                  <option value="eyeDrop">Eye Drop</option>
+                  <option value="injection">Injection</option>
+                  <option value="syrup">Syrup</option>
                   <option value="Tablet">Tablet</option>
                   <option value="Vitamin">Vitamin</option>
                  

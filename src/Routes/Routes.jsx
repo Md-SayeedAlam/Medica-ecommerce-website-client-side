@@ -22,6 +22,7 @@ import AllUsers from "../Pages/Dashboard/AllUsers";
 import ManageMedicines from "../Pages/Dashboard/ManageMedicines";
 import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
+import ManageCategories from "../Pages/Dashboard/ManageCategories";
 
 
  export const router = createBrowserRouter([
@@ -87,6 +88,11 @@ import SellerRoute from "./SellerRoute";
             {
                 path:'users',
                 element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+
+            {
+                path:'manageCategory',
+                element:<AdminRoute><ManageCategories></ManageCategories></AdminRoute>
             },
 
 
