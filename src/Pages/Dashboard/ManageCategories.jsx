@@ -4,6 +4,10 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hookos/useAxiosSecure";
 import { useForm } from "react-hook-form";
 
+// ImgBB API setup
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 const ManageCategories = () => {
   const axiosSecure = useAxiosSecure();
   const [showModal, setShowModal] = useState(false);
@@ -18,15 +22,34 @@ const ManageCategories = () => {
       return res.data;
     },
   });
-console.log(categories)
+
   // Handle Add/Update Category
   const onSubmit = async (data) => {
     try {
+      let categoryImageURL = data.categoryImageURL;
+
+      // Check if an image is uploaded
+      if (data.categoryImage[0]) {
+        const formData = new FormData();
+        formData.append("image", data.categoryImage[0]);
+
+        // Upload image to ImgBB
+        const imgbbResponse = await fetch(image_hosting_api, {
+          method: "POST",
+          body: formData,
+        });
+
+        const imgbbResult = await imgbbResponse.json();
+        if (imgbbResult.success) {
+          categoryImageURL = imgbbResult.data.url; // Get uploaded image URL
+        } else {
+          throw new Error("Image upload failed");
+        }
+      }
+
       const newCategory = {
         categoryName: data.categoryName,
-        categoryImage: data.categoryImage[0] // Assume an image is uploaded
-          ? URL.createObjectURL(data.categoryImage[0])
-          : data.categoryImageURL,
+        categoryImage: categoryImageURL, // Use uploaded URL or the provided URL
       };
 
       if (editingCategory) {
@@ -42,6 +65,7 @@ console.log(categories)
           Swal.fire("Added!", "Category added successfully", "success");
         }
       }
+
       reset();
       setShowModal(false);
       refetch();
@@ -105,7 +129,7 @@ console.log(categories)
                   <td className="px-1 py-2">
                     <img
                       src={category.categoryImage}
-                      alt={category.categoryName}
+                      alt="Category"
                       className="w-16 h-16 object-cover"
                     />
                   </td>
@@ -115,13 +139,13 @@ console.log(categories)
                         setEditingCategory(category.categoryName);
                         setShowModal(true);
                       }}
-                      className="btn  btn-xs bg-yellow-300"
+                      className="btn btn-xs bg-yellow-300"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(category._id)}
-                      className="btn  btn-xs bg-red-300"
+                      className="btn btn-xs bg-red-300"
                     >
                       Delete
                     </button>

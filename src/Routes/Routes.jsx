@@ -23,6 +23,8 @@ import ManageMedicines from "../Pages/Dashboard/ManageMedicines";
 import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
 import ManageCategories from "../Pages/Dashboard/ManageCategories";
+import Payment from "../Pages/Dashboard/Payment";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 
 
  export const router = createBrowserRouter([
@@ -83,6 +85,18 @@ import ManageCategories from "../Pages/Dashboard/ManageCategories";
                 path:'myCart',
                 element:<Cart></Cart>
             },
+            {
+                path:'payment',
+                element:<Payment></Payment>
+            },
+            {
+                path:'paymentHistory',
+                element:<PaymentHistory></PaymentHistory>
+            },
+
+
+
+
 
             // admin routes
             {

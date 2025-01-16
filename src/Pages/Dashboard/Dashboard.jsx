@@ -115,7 +115,7 @@ const Dashboard = () => {
   {!isAdmin && !isSeller && (
     <>
       <li>
-        <NavLink to="/dashboard/history">
+        <NavLink to="/dashboard/paymentHistory">
           <MdOutlinePayments /> Payment History
         </NavLink>
       </li>
