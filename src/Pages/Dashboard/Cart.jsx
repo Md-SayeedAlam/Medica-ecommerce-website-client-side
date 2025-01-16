@@ -133,7 +133,7 @@ const Cart = () => {
                 ${item.unit_price}
               </td>
               <td className="px-0 py-1 text-xs border text-center border-gray-200 break-words">
-                quantity
+                {item.unit} ml
               </td>
               <td className="px-1 py-1 text-xs border border-gray-200">
                 <div className="flex justify-center">

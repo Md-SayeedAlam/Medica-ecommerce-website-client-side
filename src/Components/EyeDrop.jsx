@@ -35,7 +35,7 @@ const EyeDrop = () => {
     
 
       const handleAddToCart = item =>{
-                  const {name,generic_name,category,company,image,unit_price,discount,description,_id} = item
+                  const {name,generic_name,category,company,image,unit_price,discount,description,_id,unit} = item
                  if(user && user.email){
                   
                   const cartItem = {
@@ -46,6 +46,7 @@ const EyeDrop = () => {
                       unit_price,
                       discount,
                       company,
+                      unit
       
                   }
       

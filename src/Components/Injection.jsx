@@ -35,7 +35,7 @@ const Injection = () => {
 
 
   const handleAddToCart = item =>{
-            const {name,generic_name,category,company,image,unit_price,discount,description,_id} = item
+            const {name,generic_name,category,company,image,unit_price,discount,description,_id,unit} = item
            if(user && user.email){
             
             const cartItem = {
@@ -45,7 +45,8 @@ const Injection = () => {
                 image,
                 unit_price,
                 discount,
-                company
+                company,
+                unit
 
             }
 

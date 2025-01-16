@@ -39,9 +39,7 @@ axiosSecure.interceptors.response.use(function(response){
     return Promise.reject(error)
 })
 
-
-
-   return axiosSecure
+return axiosSecure
 };
 
 export default useAxiosSecure;

@@ -20,6 +20,8 @@ import PrivateRoute from './../PrivateRoute/PrivateRoute';
 import Cart from "../Pages/Dashboard/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers";
 import ManageMedicines from "../Pages/Dashboard/ManageMedicines";
+import AdminRoute from "./AdminRoute";
+import SellerRoute from "./SellerRoute";
 
 
  export const router = createBrowserRouter([
@@ -84,7 +86,7 @@ import ManageMedicines from "../Pages/Dashboard/ManageMedicines";
             // admin routes
             {
                 path:'users',
-                element:<AllUsers></AllUsers>
+                element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
 
 
@@ -92,7 +94,7 @@ import ManageMedicines from "../Pages/Dashboard/ManageMedicines";
             // seller routes
             {
                 path:'manageMedicine',
-                element:<ManageMedicines></ManageMedicines>
+                element:<SellerRoute><ManageMedicines></ManageMedicines></SellerRoute>
             },
 
         ]

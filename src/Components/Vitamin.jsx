@@ -31,7 +31,7 @@ const Vitamin = () => {
           };
 
            const handleAddToCart = item =>{
-                      const {name,generic_name,category,company,image,unit_price,discount,description,_id} = item
+                      const {name,generic_name,category,company,unit,image,unit_price,discount,description,_id} = item
                      if(user && user.email){
                       
                       const cartItem = {
@@ -41,7 +41,8 @@ const Vitamin = () => {
                           image,
                           unit_price,
                           discount,
-                          company
+                          company,
+                          unit
                           
           
                       }

@@ -4,11 +4,18 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hookos/useAxiosSecure";
 import UseAuth from "../../Hookos/UseAuth";
 import { FaTrash } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../Hookos/useAxiosPublic";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const ManageMedicines = () => {
   const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const [showModal, setShowModal] = useState(false);
   const { user } = UseAuth();
+  const { register, handleSubmit, reset } = useForm();
 
   // Fetch medicines
   const { data: medicines = [], refetch } = useQuery({
@@ -20,72 +27,67 @@ const ManageMedicines = () => {
   });
 
   // Handle Add Medicine
-  const handleAddMedicine = async (event) => {
-    event.preventDefault();
-    const form = event.target;
-
-    const newMedicine = {
-      name: form.name.value,
-      generic_name: form.genericName.value,
-      description: form.description.value,
-      image: form.image.value,
-      category: form.category.value,
-      company: form.company.value,
-      unit: form.unit.value,
-      unit_price: parseFloat(form.price.value),
-      discount: parseFloat(form.discount.value || 0),
-      addedBy: user.email,
-    };
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
 
     try {
-      const res = await axiosSecure.post("/medicine", newMedicine);
+      const imageRes = await axiosPublic.post(image_hosting_api, formData);
+      if (imageRes.data.success) {
+        const newMedicine = {
+          name: data.name,
+          generic_name: data.generic_name,
+          description: data.description,
+          image: imageRes.data.data.display_url,
+          category: data.category,
+          company: data.company,
+          unit: parseFloat(data.unit),
+          unit_price: parseFloat(data.unit_price),
+          discount: parseFloat(data.discount || 0),
+          addedBy: user.email,
+        };
 
-      if (res.data.insertedId) {
-        Swal.fire("Success", "Medicine added successfully", "success");
-        refetch();
-        setShowModal(false); // Close the modal after successful addition
+        const medicineRes = await axiosSecure.post("/medicine", newMedicine);
+        if (medicineRes.data.insertedId) {
+          Swal.fire("Success", `${data.name} Medicine added successfully`, "success");
+          refetch();
+          reset();
+          setShowModal(false);
+        }
       }
     } catch (error) {
-      Swal.fire("Error", "Failed to add medicine", "error");
+      Swal.fire("Error", "Failed to add medicine. Please try again.", "error");
     }
   };
 
- 
-   const handleDelete = (id) => {
-     Swal.fire({
-       title: "Are you sure?",
-       text: "You won't be able to revert this!",
-       icon: "warning",
-       showCancelButton: true,
-       confirmButtonColor: "#3085d6",
-       cancelButtonColor: "#d33",
-       confirmButtonText: "Yes, delete it!",
-     }).then((result) => {
-       if (result.isConfirmed) {
-         axiosSecure.delete(`/medicine/${id}`)
-         .then((res) => {
-           if (res.data.deletedCount > 0) {
-             Swal.fire({
-               title: "Deleted!",
-               text: "User has been deleted.",
-               icon: "success",
-             });
-             refetch();
-           }
-         });
-       }
-     });
-   };
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/medicine/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            Swal.fire("Deleted!", "Medicine has been deleted.", "success");
+            refetch();
+          }
+        });
+      }
+    });
+  };
 
   return (
     <div>
-
-      
-        <h2 className="text-xl  text-center my-4">Manage Medicines</h2>
-        <div className="flex justify-center items-center my-4">
+      <h2 className="text-xl text-center my-4">Manage Medicines</h2>
+      <div className="flex justify-center items-center my-4">
         <button
           onClick={() => setShowModal(true)}
-          className="btn bg-green-200 hover:bg-green-300 text-green-500 "
+          className="btn bg-green-200 hover:bg-green-300 text-green-500"
         >
           Add Medicine
         </button>
@@ -167,69 +169,87 @@ const ManageMedicines = () => {
         </table>
       </div>
 
+
       {/* Add Medicine Modal */}
       {showModal && (
         <div className="modal modal-open">
           <div className="modal-box">
-            <form onSubmit={handleAddMedicine}>
-              <div className="form-control">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <h2 className="font bold text-xl text-center bg-green-200 text-green-500 rounded-md">Add Medicine</h2>
+            <div className="form-control">
                 <label className="label">Item Name</label>
                 <input
                   className="input input-bordered"
                   type="text"
                   name="name"
-                  required
+                  {...register("name",{required:true})}
+                
                 />
               </div>
+
               <div className="form-control">
                 <label>Generic Name</label>
                 <input
                   className="input input-bordered"
                   type="text"
                   name="genericName"
-                  required
+                  {...register("generic_name",{required:true})}
+                //   required
                 />
               </div>
+
               <div className="form-control">
                 <label>Description</label>
                 <textarea
                   className="input input-bordered"
                   name="description"
+                  {...register("description",{required:true})}
                   required
                 />
               </div>
-              <div className="form-control">
-                <label>Image URL</label>
+
+
+                <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  <span className="label-text">Pick a file</span>
+                  
+                </label>
                 <input
-                  className="input input-bordered"
-                  type="url"
-                  name="image"
-                  required
+                  type="file"
+                   name="image"
+                   {...register("image",{required:true})}
+                  className="file-input file-input-bordered w-full max-w-xs"
                 />
+                
               </div>
+
               <div className="form-control">
                 <label>Category</label>
                 <select
                   className="py-3 border rounded-md"
                   name="category"
-                  required
+                  {...register("category",{required:true})}
+                //   required
                 >
-                  <option value="Antibiotic">Capsule</option>
-                  <option value="Analgesic">Eye Drop</option>
-                  <option value="Analgesic">Injection</option>
-                  <option value="Analgesic">Syrup</option>
-                  <option value="Analgesic">Tablet</option>
-                  <option value="Analgesic">Vitamin</option>
-                  {/* Add more categories */}
+                  <option value="Capsule">Capsule</option>
+                  <option value="Eye Drop">Eye Drop</option>
+                  <option value="Injection">Injection</option>
+                  <option value="Syrup">Syrup</option>
+                  <option value="Tablet">Tablet</option>
+                  <option value="Vitamin">Vitamin</option>
+                 
                 </select>
               </div>
+
+
               <div className="form-control">
                 <label>Company</label>
                 <input
                   className="input input-bordered"
                   type="text"
                   name="company"
-                  required
+                  {...register("company",{required:true})}
+                //   required
                 />
               </div>
               <div className="form-control">
@@ -237,8 +257,9 @@ const ManageMedicines = () => {
                 <input
                   className="input input-bordered"
                   type="text"
+                  {...register("unit",{required:true})}
                   name="unit"
-                  required
+                //   required
                 />
               </div>
               <div className="form-control">
@@ -247,7 +268,8 @@ const ManageMedicines = () => {
                   className="input input-bordered"
                   type="number"
                   name="price"
-                  required
+                  {...register("unit_price",{required:true})}
+                //   required
                 />
               </div>
               <div className="form-control">
@@ -256,9 +278,11 @@ const ManageMedicines = () => {
                   className="input input-bordered"
                   type="number"
                   name="discount"
+                  {...register("discount",{required:true})}
                   defaultValue="0"
                 />
               </div>
+
               <div className="modal-action">
                 <button type="submit" className="btn btn-success">
                   Add
