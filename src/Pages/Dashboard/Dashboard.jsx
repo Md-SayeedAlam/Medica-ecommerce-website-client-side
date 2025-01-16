@@ -8,10 +8,13 @@ import { MdOutlinePayments, MdOutlineRateReview, MdOutlineReport } from "react-i
 import { FaShop } from "react-icons/fa6";
 import { GiMedicines } from "react-icons/gi";
 import { RiAdvertisementLine } from "react-icons/ri";
+import useAdmin from "../../Hookos/useAdmin";
+import useSeller from "../../Hookos/useSeller";
 
 const Dashboard = () => {
   const [cart] = useCart();
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
+  const [isSeller] = useSeller();
   
   return (
     <div className="flex flex-col lg:flex-row ">
@@ -21,113 +24,122 @@ const Dashboard = () => {
 
         <h2 className="text-center mt-5">Medica Pharma</h2>
 
-        <ul className="menu ">
+        <ul className="menu">
+  {/* Admin Dashboard */}
+  {isAdmin && (
+    <>
+      <li>
+        <NavLink to="/dashboard/userHome">
+          <FaHome /> Admin Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/users">
+          <MdOutlineRateReview /> Manage Users
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/manageMedicine">
+          <GiMedicines /> Manage Category
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/advertise">
+          <MdOutlinePayments /> Payment Management
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/paymentHistory">
+          <MdOutlineReport /> Sales Report
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/bannerAdvertise">
+          <RiAdvertisementLine /> Manage Banner Advertise
+        </NavLink>
+      </li>
 
-        {
-            isAdmin ? 
+      <div className="divider"></div>
+      <li>
+        <NavLink to="/">
+          <FaHome /> Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/shop">
+          <FaShop /> Shop
+        </NavLink>
+      </li>
+    </>
+  )}
 
-            <>
-             {/* Seller dashboard */}
-          <li>
-            <NavLink to="/dashboard/userHome">
-              <FaHome></FaHome>Admin Home
-            </NavLink>
-          </li>
+  {/* Seller Dashboard */}
+  {isSeller && (
+    <>
+      <li>
+        <NavLink to="/dashboard/userHome">
+          <FaHome /> Seller Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/manageMedicine">
+          <GiMedicines /> Manage Medicines
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/advertise">
+          <RiAdvertisementLine /> Ask For Advertisement
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/paymentHistory">
+          <MdOutlinePayments /> Payment History
+        </NavLink>
+      </li>
 
-         
-          <li>
-            <NavLink to="/dashboard/users">
-              <MdOutlineRateReview></MdOutlineRateReview> Manage Users
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/manageMedicine">
-            <GiMedicines></GiMedicines> Manage Category
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/advertise">
-            <MdOutlinePayments></MdOutlinePayments> Payment management
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/paymentHistory">
-              <MdOutlineReport></MdOutlineReport> Sales Report
-            </NavLink>
-          </li>
+      <div className="divider"></div>
+      <li>
+        <NavLink to="/">
+          <FaHome /> Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/shop">
+          <FaShop /> Shop
+        </NavLink>
+      </li>
+    </>
+  )}
 
-          <li>
-            <NavLink to="/dashboard/paymentHistory">
-            <RiAdvertisementLine></RiAdvertisementLine> Manage banner Advertise
-            </NavLink>
-          </li>
-            </> 
-            
-            : 
-            
-            
-            <>
-             {/* Seller dashboard */}
-          <li>
-            <NavLink to="/dashboard/userHome">
-              <FaHome></FaHome> Seller Home
-            </NavLink>
-          </li>
+  {/* User Dashboard */}
+  {!isAdmin && !isSeller && (
+    <>
+      <li>
+        <NavLink to="/dashboard/history">
+          <MdOutlinePayments /> Payment History
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/myCart">
+          <FiShoppingCart /> My Cart ({cart.length})
+        </NavLink>
+      </li>
 
-         
-          {/* <li>
-            <NavLink to="/dashboard/review">
-              <MdOutlineRateReview></MdOutlineRateReview> Review
-            </NavLink>
-          </li> */}
-          <li>
-            <NavLink to="/dashboard/manageMedicine">
-            <GiMedicines></GiMedicines> Manage Medicines
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/advertise">
-            <RiAdvertisementLine></RiAdvertisementLine> Ask For Advertisement
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/paymentHistory">
-              <MdOutlinePayments></MdOutlinePayments> Payment History
-            </NavLink>
-          </li>
-            </>
-        }
+      <div className="divider"></div>
+      <li>
+        <NavLink to="/">
+          <FaHome /> Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/shop">
+          <FaShop /> Shop
+        </NavLink>
+      </li>
+    </>
+  )}
+</ul>
 
-
-         
-
-          {/* user Dashboard */}
-          <li>
-            <NavLink to="/dashboard/history">
-            <MdOutlinePayments></MdOutlinePayments>   Payment History
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/myCart">
-              <FiShoppingCart></FiShoppingCart> My Cart ({cart.length})
-            </NavLink>
-          </li>
-
-
-          {/* Shared nav links */}
-
-          <div className="divider"></div>
-          <li>
-            <NavLink to="/">
-              <FaHome></FaHome>Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/shop">
-              <FaShop></FaShop> Shop
-            </NavLink>
-          </li>
-        </ul>
       </div>
 
       {/* dashboard content */}

@@ -16,13 +16,6 @@ const AllUsers = () => {
       const res = await axiosSecure.get(
         `/users/${user?.email}`
 
-        // headers ta comment kora hoise karon axios secure e eta diye deya hoise tai ekhane off kora hoise
-
-        //     {
-        //     headers:{
-        //         authorization:`Bearer ${localStorage.getItem('ACCESS TOKEN')}`
-        //     }
-        //   }
       );
       return res.data;
     },
@@ -32,7 +25,7 @@ const AllUsers = () => {
     if (user.role === userRole) return;
   
     axiosSecure
-      .patch(`/users/role/${user.email}`, { role: userRole })
+      .patch(`/users/role/${user._id}`, { role: userRole })
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           refetch();

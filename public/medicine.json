@@ -8,7 +8,8 @@
         "category": "capsule",
         "company":"Zovi Pharmaceuticals Ltd.",
         "unit_price": 14.7,
-        "discount":0
+        "discount":0,
+        "addedBy":"muhammadsayeedalam9@gmail.com"
     },
     {
         
@@ -19,7 +20,8 @@
         "category": "capsule",
         "company":"Zovi Pharmaceuticals Ltd.",
         "unit_price": 15,
-        "discount":0
+        "discount":0,
+        "addedBy":"muhammadsayeedalam9@gmail.com"
     },
     {
         
@@ -30,7 +32,8 @@
         "category": "capsule",
         "company":"Renata Limited",
         "unit_price":2.20,
-        "discount":0
+        "discount":0,
+        "addedBy":"muhammadsayeedalam9@gmail.com"
     },
     {
         
@@ -41,7 +44,8 @@
         "category": "capsule",
         "company":"Novartis (Bangladesh) Ltd.",
         "unit_price": 99.50,
-        "discount":2
+        "discount":2,
+        "addedBy":"muhammadsayeedalam9@gmail.com"
     },
     {
         
@@ -52,7 +56,8 @@
         "category": "capsule",
         "company":"UniMed UniHealth Pharmaceuticals Ltd.",
         "unit_price": 50,
-        "discount":2
+        "discount":2,
+        "addedBy":"muhammadsayeedalam9@gmail.com"
     },
     {
         
@@ -63,7 +68,8 @@
         "category": "capsule",
         "company":"Lotrel Pharmaceuticals Ltd.",
         "unit_price": 14.7,
-        "discount":0
+        "discount":0,
+        "addedBy":"muhammadsayeedalam9@gmail.com"
     },
     {
         
@@ -74,7 +80,8 @@
         "category": "eyedrop",
         "company":"Incepta Pharmaceuticals Ltd.",
         "unit_price":80,
-        "discount":0
+        "discount":0,
+        "addedBy":"muhammadsayeedalam9@gmail.com"
     },
     {
         
@@ -85,7 +92,8 @@
         "category": "eyedrop",
         "company":"ACME Laboratories Ltd.",
         "unit_price":100,
-        "discount":5
+        "discount":5,
+        "addedBy":"muhammadsayeedalam9@gmail.com"
     },
    
     {
@@ -97,7 +105,8 @@
         "category": "eyedrop",
         "company":"OSL Pharma Limited",
         "unit_price":80,
-        "discount":0
+        "discount":0,
+        "addedBy":"muhammadsayeedalam9@gmail.com"
     },
     {
         
@@ -108,7 +117,8 @@
         "category": "injection",
         "company":"Incepta Pharmaceuticals Ltd.",
         "unit_price":19.89,
-        "discount":0
+        "discount":0,
+        "addedBy":"muhammadsayeedalam9@gmail.com"
     },
     {
         
@@ -119,7 +129,8 @@
         "category": "injection",
         "company":"Incepta Pharmaceuticals Ltd.",
         "unit_price":90,
-        "discount":2
+        "discount":2,
+        "addedBy":"muhammadsayeedalam9@gmail.com"
     },
     {
         
@@ -130,7 +141,8 @@
         "category": "injection",
         "company":"Incepta Pharmaceuticals Ltd.",
         "unit_price":120,
-        "discount":0
+        "discount":0,
+        "addedBy":"md.sayeedalamsagar00319@gmail.com"
     },
     {
         
@@ -141,7 +153,8 @@
         "category": "syrup",
         "company":"Ad-din Pharmaceuticals Ltd.",
         "unit_price":28,
-        "discount":0
+        "discount":0,
+         "addedBy":"md.sayeedalamsagar00319@gmail.com"
     },
    
     {
@@ -153,7 +166,8 @@
         "category": "syrup",
         "company":"Opsonin Herbal & Nutraceuticals Ltd.",
         "unit_price":28,
-        "discount":0
+        "discount":0,
+         "addedBy":"md.sayeedalamsagar00319@gmail.com"
     },
    
     {
@@ -165,7 +179,8 @@
         "category": "syrup",
         "company":"ACME Laboratories Ltd.",
         "unit_price":70,
-        "discount":0
+        "discount":0,
+         "addedBy":"md.sayeedalamsagar00319@gmail.com"
     },
     {
         
@@ -176,7 +191,8 @@
         "category": "tablet",
         "company":"Incepta Pharmaceuticals Ltd.",
         "unit_price": 10,
-        "discount":0
+        "discount":0,
+         "addedBy":"md.sayeedalamsagar00319@gmail.com"
     },
     {
         
@@ -187,7 +203,8 @@
         "category": "tablet",
         "company":"Incepta Pharmaceuticals Ltd.",
         "unit_price": 6,
-        "discount":3
+        "discount":3,
+         "addedBy":"lalusowrav@gmail.com"
     },
    
     {
@@ -199,7 +216,8 @@
         "category": "tablet",
         "company":"Healthcare Pharmaceuticals Ltd.",
         "unit_price": 10,
-        "discount":0
+        "discount":0,
+          "addedBy":"lalusowrav@gmail.com"
     },
     {
         
@@ -210,7 +228,8 @@
         "category": "vitamin",
         "company":"Renata Limited",
         "unit_price": 20,
-        "discount":0
+        "discount":0,
+          "addedBy":"lalusowrav@gmail.com"
     },
     {
         
@@ -221,7 +240,8 @@
         "category": "vitamin",
         "company":"Drug International Ltd.",
         "unit_price": 5,
-        "discount":0
+        "discount":0,
+          "addedBy":"lalasowrav@gmail.com"
     }
    
     
