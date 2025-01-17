@@ -3,11 +3,15 @@ import { Link, NavLink } from "react-router-dom";
 import UseAuth from "../../Hookos/UseAuth";
 import toast from "react-hot-toast";
 import useCart from "../../Hookos/useCart";
-
+import './Navbar.css'
+import useAdmin from "../../Hookos/useAdmin";
+import useSeller from "../../Hookos/useSeller";
 const Navbar = () => {
 const [cart] = useCart()
 const totalPrice = cart.reduce((total,item)=>total + item.unit_price,0)
 const {user,logOut} = UseAuth()
+const [isAdmin] = useAdmin()
+const [isSeller] = useSeller()
 const handleLogOut = () => {
   logOut()
     .then(() => {
@@ -27,9 +31,9 @@ const handleLogOut = () => {
       <li>
         <NavLink
           to="/"
-          className={({ isActive }) =>
-            isActive ? "bg-green-200 text-green-500" : "text-black bg-gray-300"
-          }
+          // className={({ isActive }) =>
+          //   isActive ? "bg-green-200 text-green-500" : "text-black bg-gray-300"
+          // }
         >
           Home
         </NavLink>
@@ -38,18 +42,20 @@ const handleLogOut = () => {
       <li>
         <NavLink
           to='/shop'
-          className={({ isActive }) =>
-            isActive ? "bg-green-200 text-green-500 " : "text-black bg-gray-300"
-          }
+          // className={({ isActive }) =>
+          //   isActive ? "bg-green-200 text-green-500 " : "text-black bg-gray-300"
+          // }
         >
           Shop
         </NavLink>
       </li>
 
       <li>
-        <NavLink  className={({ isActive }) =>
-            isActive ? "bg-green-200 text-green-500 " : "text-black bg-gray-300"
-          }>
+        <NavLink 
+        //  className={({ isActive }) =>
+        //     isActive ? "bg-green-200 text-green-500 " : "text-black bg-gray-300"
+        //   }
+          >
            {/* language dropdown */}
 
     <div className="dropdown dropdown-right">
@@ -168,9 +174,17 @@ const handleLogOut = () => {
                 {/* <span className="badge">New</span> */}
               </Link>
             </li>
-            <li>
-              <Link to='/dashboard'>Dashboard</Link>
-            </li>
+           
+              {
+                user  && isAdmin &&   <li><Link to='/dashboard/adminHome'>Dashboard</Link></li>
+              }
+              {
+                user  && isSeller &&   <li><Link to='/dashboard/sellerHome'>Dashboard</Link></li>
+              }
+              {
+                user  && !isSeller && !isAdmin &&   <li><Link to='/dashboard/paymentHistory'>Dashboard</Link></li>
+              }
+            
             <li>
               <button onClick={handleLogOut}>Logout</button>
             </li>

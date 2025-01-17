@@ -12,7 +12,7 @@ const SellerRoute = ({children}) => {
     const location = useLocation()
 
 
-
+console.log(isSeller)
     
     if(loading || isSellerLoading) {
         return <Loading />;

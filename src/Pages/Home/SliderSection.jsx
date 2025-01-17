@@ -7,11 +7,17 @@ import { Navigation } from "swiper/modules";
 import useMedicineCategory from "../../Hookos/useMedicineCategory";
 
 const SliderSection = () => {
-  const [slides, setSlides] = useState([]);
+  // const [slides, setSlides] = useState([]);
   const [categories] = useMedicineCategory()
-  useEffect(() => {
-    setSlides(categories);
-  }, [categories]);
+
+
+  // useEffect(() => {
+  //   setSlides(categories);
+  // }, [categories]);
+
+
+ 
+
 
   // useEffect(() => {
   //   fetch("http://localhost:5000/medicine")
@@ -31,7 +37,7 @@ const SliderSection = () => {
          className="mySwiper"
        
       >
-        {slides.map((slide) => (
+        {categories.map((slide) => (
           <SwiperSlide key={slide._id}>
             
             <div className="relative">

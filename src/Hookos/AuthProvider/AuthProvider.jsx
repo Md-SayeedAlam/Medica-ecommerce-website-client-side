@@ -60,7 +60,7 @@ useEffect(()=>{
         console.log('currently logged in',currentUser)
         if(currentUser){
             // get Token and store
-            const userInfo = {email:currentUser.email}
+            const userInfo = {email:currentUser?.email}
             axiosPublic.post('/jwt',userInfo)
             .then(res=>{
                 if(res.data.token){
@@ -69,7 +69,7 @@ useEffect(()=>{
                 }
             })
         }else{
-            // TODO remove token
+            
 
             localStorage.removeItem('ACCESS TOKEN')
             setLoading(false)

@@ -25,6 +25,9 @@ import SellerRoute from "./SellerRoute";
 import ManageCategories from "../Pages/Dashboard/ManageCategories";
 import Payment from "../Pages/Dashboard/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
+import AdminHomepage from "../Pages/Dashboard/AdminHomepage";
+import SellerHomepage from "../Pages/Dashboard/SellerHomepage";
+import PaymentManagement from "../Pages/Dashboard/PaymentManagement";
 
 
  export const router = createBrowserRouter([
@@ -103,18 +106,34 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
                 path:'users',
                 element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
+            {
+                
+                // index:true,
+                path:'adminHome',
+                element:<AdminRoute><AdminHomepage></AdminHomepage></AdminRoute>
+            },
 
             {
                 path:'manageCategory',
                 element:<AdminRoute><ManageCategories></ManageCategories></AdminRoute>
             },
+            {
+                path:'paymentManagement',
+                element:<AdminRoute><PaymentManagement></PaymentManagement></AdminRoute>
+            },
 
 
 
             // seller routes
+            
+            
             {
                 path:'manageMedicine',
                 element:<SellerRoute><ManageMedicines></ManageMedicines></SellerRoute>
+            },
+            {
+                path:'sellerHome',
+                element:<SellerRoute><SellerHomepage></SellerHomepage></SellerRoute>
             },
 
         ]

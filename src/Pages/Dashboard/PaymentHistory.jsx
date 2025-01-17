@@ -7,6 +7,7 @@ import jsPDF from 'jspdf';
 
 import "jspdf-autotable";
 import useAxiosPublic from '../../Hookos/useAxiosPublic';
+import Swal from 'sweetalert2';
 const PaymentHistory = () => {
 
 
@@ -22,7 +23,7 @@ const PaymentHistory = () => {
       queryKey: ["users"],
       
       queryFn: async () => {
-        const res = await axiosPublic.get(
+        const res = await axiosSecure.get(
           `/users/api/${user?.email}`
   
         );
@@ -30,7 +31,7 @@ const PaymentHistory = () => {
       },
     });
 
-
+console.log(users)
 
 
 
@@ -71,8 +72,15 @@ const PaymentHistory = () => {
         body: tableRows,
         startY: 60,
       });
-  
+      
       doc.save("invoice.pdf");
+     Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Invoice successfully Downloaded",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
     };
 
 
@@ -81,7 +89,11 @@ const PaymentHistory = () => {
 
     return (
         <div className='my-5'>
-        <h2 className="text-2xl text-center uppercase">Total Payments:{payments.length} </h2>
+          
+       <div className='flex flex-col justify-center items-center gap-2'>
+       <img className='w-10 rounded-full' src="/medica-logo.avif" alt="" />
+       <h2 className="text-2xl text-center uppercase">Total Payments:{payments.length} </h2>
+       </div>
 
 
 
