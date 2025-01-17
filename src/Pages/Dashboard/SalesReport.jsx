@@ -1,80 +1,124 @@
-import React from "react";
+import React, { useState } from "react";
 import useAxiosSecure from "../../Hookos/useAxiosSecure";
 import UseAuth from "../../Hookos/UseAuth";
 import { useQuery } from "@tanstack/react-query";
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
+import Loading from "../../Components/Loading";
 
 const SalesReport = () => {
   const axiosSecure = useAxiosSecure();
-  const { user, loading } = UseAuth();
+  const { user } = UseAuth();
+
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const {
     data: report = [],
     refetch,
     isLoading,
   } = useQuery({
-    queryKey: ["report"],
-
+    queryKey: ["report", startDate, endDate],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/admin/sells`);
+      const res = await axiosSecure.get(`/admin/sells`, {
+        params: { startDate, endDate },
+      });
       return res.data;
     },
   });
 
-  console.log(report);
- 
+  const exportToPDF = () => {
+    const doc = new jsPDF();
+    doc.text("Sales Report", 10, 10);
+
+    const tableData = report.map((item, idx) => [
+      idx + 1,
+      item.name,
+      item.addedBy,
+      item.buyerEmail,
+      `$${item.unit_price.toFixed(2)}`,
+      item.quantity,
+      `$${(item.unit_price * item.quantity).toFixed(2)}`,
+    ]);
+
+    doc.autoTable({
+      head: [["No.", "Medicine Name", "Seller Email", "Buyer Email", "Unit Price", "Quantity", "Total"]],
+      body: tableData,
+    });
+
+    doc.save("SalesReport.pdf");
+  };
 
   return (
-    <div>
-      <div className="flex justify-center gap-5 my-5">
-       
-        <h2 className="text-xl">Total Sales Report :{report.length}</h2>
+    <div className="p-4">
+      {/* Header Section */}
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 my-5">
+        <div className="flex gap-3 items-center">
+          <input
+            type="date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+            className="border rounded p-1"
+          />
+          <input
+            type="date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+            className="border rounded p-1"
+          />
+          <button
+            onClick={refetch}
+            className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+          >
+            Filter
+          </button>
+        </div>
+        <button
+          onClick={exportToPDF}
+          className="bg-green-500 text-white px-3 py-1 rounded hover:bg-red-600"
+        >
+          Export PDF
+        </button>
       </div>
-      <div className="w-full min-h-screen">
-        <table className="table-auto w-full border border-gray-200">
-          {/* head */}
-          <thead>
-            <tr>
-              <th className="px-0 py-1 text-center text-xs font-semibold border border-gray-200">
-                No.
-              </th>
-              <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">
-                Image
-              </th>
-              <th className="px-0 py-1 text-center text-xs font-semibold border border-gray-200">
-                Medicine Name
-              </th>
-              <th className="px-0 py-1 text-center text-xs font-semibold border border-gray-200 max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap break-words">
-                Seller Email
-              </th>
-              <th className="px-0 py-1 text-center text-xs font-semibold border border-gray-200 max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap break-words">
-                Buyer Email
-              </th>
-            </tr>
-            
-          </thead>
-          <tbody>
-            {report.map((user, idx) => (
-              <tr key={idx}>
-                <th className="px-0 py-1 text-center text-xs font-semibold border border-gray-200">
-                  {idx + 1}
-                </th>
-                <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">
-                  <img className="w-8 rounded-full" src={user.image} alt="" />
-                </th>
-                <td className="px-0 py-1 text-center text-xs border border-gray-200">
-                  {user.name}
-                </td>
-                <td className="px-0 py-1 text-xs border border-gray-200 text-center break-words max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">
-                {user.addedBy}
-                </td>
-                <td className="px-0 py-1 text-xs border border-gray-200 text-center break-words max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">
-                {user.buyerEmail}
-                </td>
+
+      {/* Table Section */}
+      <div className="w-full overflow-auto rounded border border-gray-200 shadow">
+        {isLoading ? (
+          <Loading></Loading>
+        ) : (
+          <table className="table-auto w-full text-sm">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="px-2 py-1 text-center border border-gray-300">No.</th>
+                <th className="px-2 py-1 text-center border border-gray-300">Image</th>
+                <th className="px-2 py-1 text-center border border-gray-300">Medicine Name</th>
+                <th className="px-2 py-1 text-center border border-gray-300">Seller Email</th>
+                <th className="px-2 py-1 text-center border border-gray-300">Buyer Email</th>
+                <th className="px-2 py-1 text-center border border-gray-300">Unit Price</th>
+                <th className="px-2 py-1 text-center border border-gray-300">Quantity</th>
+                <th className="px-2 py-1 text-center border border-gray-300">Total</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        
+            </thead>
+            <tbody>
+              {report.map((item, idx) => (
+                <tr key={idx} className="hover:bg-gray-50">
+                  <td className="px-2 py-1 text-center border border-gray-300">{idx + 1}</td>
+                  <td className="px-2 py-1 text-center border border-gray-300">
+                    <img className="w-8 h-8 rounded-full mx-auto" src={item.image} alt="" />
+                  </td>
+                  <td className="px-2 py-1 text-center border border-gray-300 truncate">{item.name}</td>
+                  <td className="px-2 py-1 text-center border border-gray-300 truncate">{item.addedBy}</td>
+                  <td className="px-2 py-1 text-center border border-gray-300 truncate">{item.buyerEmail}</td>
+                  <td className="px-2 py-1 text-center border border-gray-300">${item.unit_price.toFixed(2)}</td>
+                  <td className="px-2 py-1 text-center border border-gray-300">{item.quantity}</td>
+                  <td className="px-2 py-1 text-center border border-gray-300">
+                    ${(item.unit_price * item.quantity).toFixed(2)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );
