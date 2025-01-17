@@ -10,7 +10,8 @@ const SliderSection = () => {
   // const [slides, setSlides] = useState([]);
   const [categories] = useMedicineCategory()
 
-
+const advertise = categories.filter(category=>category.advertise === true)
+console.log(advertise)
   // useEffect(() => {
   //   setSlides(categories);
   // }, [categories]);
@@ -37,7 +38,7 @@ const SliderSection = () => {
          className="mySwiper"
        
       >
-        {categories.map((slide) => (
+        {advertise.map((slide) => (
           <SwiperSlide key={slide._id}>
             
             <div className="relative">

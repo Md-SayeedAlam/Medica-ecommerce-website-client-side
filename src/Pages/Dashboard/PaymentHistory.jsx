@@ -8,10 +8,11 @@ import jsPDF from 'jspdf';
 import "jspdf-autotable";
 import useAxiosPublic from '../../Hookos/useAxiosPublic';
 import Swal from 'sweetalert2';
+import Loading from '../../Components/Loading';
 const PaymentHistory = () => {
 
 
-    const { user } = UseAuth();
+    const { user ,loading} = UseAuth();
     const [cart] = useCart()
     const axiosSecure = useAxiosSecure();
     const axiosPublic = useAxiosPublic()
@@ -84,7 +85,7 @@ console.log(users)
     };
 
 
-
+    if(loading) return <Loading></Loading>
 
 
     return (

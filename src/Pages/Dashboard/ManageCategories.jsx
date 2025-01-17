@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hookos/useAxiosSecure";
 import { useForm } from "react-hook-form";
+import Loading from "../../Components/Loading";
+import UseAuth from "../../Hookos/UseAuth";
 
 // ImgBB API setup
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -13,7 +15,7 @@ const ManageCategories = () => {
   const [showModal, setShowModal] = useState(false);
   const [editingCategory, setEditingCategory] = useState(null);
   const { register, handleSubmit, reset } = useForm();
-
+  const {loading} = UseAuth()
   // Fetch categories
   const { data: categories = [], refetch } = useQuery({
     queryKey: ["categories"],
@@ -94,7 +96,7 @@ const ManageCategories = () => {
       }
     });
   };
-
+  if(loading) return <Loading></Loading>
   return (
     <div>
       <h2 className="text-xl text-center my-4">Manage Categories</h2>

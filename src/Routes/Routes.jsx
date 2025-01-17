@@ -29,6 +29,7 @@ import AdminHomepage from "../Pages/Dashboard/AdminHomepage";
 import SellerHomepage from "../Pages/Dashboard/SellerHomepage";
 import PaymentManagement from "../Pages/Dashboard/PaymentManagement";
 import SalesReport from "../Pages/Dashboard/SalesReport";
+import ManageAdvertise from "../Pages/Dashboard/ManageAdvertisement";
 
 
  export const router = createBrowserRouter([
@@ -125,6 +126,10 @@ import SalesReport from "../Pages/Dashboard/SalesReport";
             {
                 path:'report',
                 element:<AdminRoute><SalesReport></SalesReport></AdminRoute>
+            },
+            {
+                path:'manageAdvertise',
+                element:<AdminRoute><ManageAdvertise></ManageAdvertise></AdminRoute>
             },
 
 

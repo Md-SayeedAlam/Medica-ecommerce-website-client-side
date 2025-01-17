@@ -5,7 +5,7 @@ import useAxiosPublic from './useAxiosPublic';
 const useMedicineCategory = () => {
     // const [categories,setCategories] = useState([])
     // const [loading,setLoading] = useState(true)
-    const axiosPublic = useAxiosPublic()
+   
     // useEffect(()=>{
     //     fetch('http://localhost:5000/medicine')
     //     .then(res=>res.json())
@@ -14,13 +14,14 @@ const useMedicineCategory = () => {
     //         setLoading(false)
     //     })
     // },[])
-
+    const axiosPublic = useAxiosPublic()
     const {data:categories=[],refetch,isLoading}=useQuery({
         queryKey:['categories'],
         queryFn: async()=>{
             const res = await axiosPublic.get('/medicine')
             return res.data
         }
+        
     })
 
 

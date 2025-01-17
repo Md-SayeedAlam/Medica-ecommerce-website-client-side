@@ -3,13 +3,14 @@ import useAxiosSecure from '../../Hookos/useAxiosSecure';
 import UseAuth from '../../Hookos/UseAuth';
 import { useQuery } from '@tanstack/react-query';
 import { FaDollarSign } from 'react-icons/fa';
+import Loading from '../../Components/Loading';
 
 
 
 
 const AdminHomepage = () => {
 
-    const { user } = UseAuth();
+    const { user ,loading} = UseAuth();
     const axiosSecure = useAxiosSecure();
 
     const { data: stats = [],isLoading } = useQuery({
@@ -23,6 +24,9 @@ const AdminHomepage = () => {
       });
       const { totalRevenue, paidTotal, pendingTotal } = stats;
     //   console.log(stats)
+
+
+    if(loading) return <Loading></Loading>
 
     return (
         <div className='flex flex-col justify-center items-center gap-5 mt-10'>

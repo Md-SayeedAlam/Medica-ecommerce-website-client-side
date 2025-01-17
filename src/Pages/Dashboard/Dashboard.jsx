@@ -58,7 +58,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/bannerAdvertise">
+                <NavLink to="/dashboard/manageAdvertise">
                   <RiAdvertisementLine /> Manage Banner Advertise
                 </NavLink>
               </li>
