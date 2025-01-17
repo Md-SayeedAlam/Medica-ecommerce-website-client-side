@@ -28,6 +28,7 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 import AdminHomepage from "../Pages/Dashboard/AdminHomepage";
 import SellerHomepage from "../Pages/Dashboard/SellerHomepage";
 import PaymentManagement from "../Pages/Dashboard/PaymentManagement";
+import SalesReport from "../Pages/Dashboard/SalesReport";
 
 
  export const router = createBrowserRouter([
@@ -120,6 +121,10 @@ import PaymentManagement from "../Pages/Dashboard/PaymentManagement";
             {
                 path:'paymentManagement',
                 element:<AdminRoute><PaymentManagement></PaymentManagement></AdminRoute>
+            },
+            {
+                path:'report',
+                element:<AdminRoute><SalesReport></SalesReport></AdminRoute>
             },
 
 
