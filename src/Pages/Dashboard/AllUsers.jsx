@@ -83,65 +83,66 @@ if(loading) return <Loading></Loading>
     <div>
       <div className="flex justify-center gap-5 my-5">
         <h2 className="text-xl">All Users</h2>
-        <h2 className="text-xl">Total Users:{users.length}</h2>
+        <h2 className="text-xl">Total Users :{users.length}</h2>
       </div>
-      <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Change Role</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, idx) => (
-              <tr key={user._id}>
-                <th>{idx + 1} </th>
-                <td>{user.name}</td>
-                <td>{user.email} </td>
-                <td>{user.role} </td>
-                <td>
-                  {user.role === "Admin" ? (
-                    "Admin"
-                  ) : (
-                    <select
-                      defaultValue={user.role}
-                      onChange={(e) => handleChangeRole(user, e.target.value)}
-                      name=""
-                      id=""
-                      disabled={user.role === "Admin"}
-                      className="px-2 py-1 rounded-md "
-                    >
-                      <option value="Seller">Seller</option>
-                      <option value="Admin">Admin</option>
-                      <option value="User">User</option>
-                    </select>
-                  )}
-                </td>
-                <td>
-                  {user.role === "Admin" ? (
-                    <button disabled className="p-4 hover:bg-red-200">
-                      <FaTrash className="text-red-400 "></FaTrash>
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => handleDeleteUser(user)}
-                      className="btn btn-ghost"
-                    >
-                      <FaTrash className="text-red-400"></FaTrash>
-                    </button>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <div className="w-full min-h-screen">
+  <table className="table-auto w-full border border-gray-200">
+    {/* head */}
+    <thead>
+      <tr className="px-1 py-1">
+        <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">No.</th>
+        <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">Name</th>
+        <th className="px-0 py-1 text-center text-xs font-semibold border border-gray-200 max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">Email</th>
+        <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">Role</th>
+        <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">Change Role</th>
+        <th className="py-1 text-center text-xs font-semibold border border-gray-200">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {users.map((user, idx) => (
+        <tr key={user._id}>
+          <th className="px-0 py-1 text-xs border border-gray-200 text-center">{idx + 1} </th>
+          <td className="px-0 py-1 text-xs border border-gray-200 text-center break-words">{user.name}</td>
+          <td className="px-0 py-1 text-xs border border-gray-200 text-center break-words max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">{user.email}</td>
+          <td className="px-0 py-1 text-xs border border-gray-200 text-center break-words">{user.role} </td>
+          <td className="px-0 py-1 text-xs border border-gray-200 text-center">
+            {user.role === "Admin" ? (
+              "Admin"
+            ) : (
+              <select
+                defaultValue={user.role}
+                onChange={(e) => handleChangeRole(user, e.target.value)}
+                name=""
+                id=""
+                disabled={user.role === "Admin"}
+                className="rounded-md "
+              >
+                <option value="Seller">Seller</option>
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+              </select>
+            )}
+          </td>
+          <td className="py-1 text-xs border border-gray-200 text-center">
+            {user.role === "Admin" ? (
+              <button disabled className="p-4 hover:bg-red-200">
+                <FaTrash className="text-red-400 "></FaTrash>
+              </button>
+            ) : (
+              <button
+                onClick={() => handleDeleteUser(user)}
+                className="btn btn-ghost"
+              >
+                <FaTrash className="text-red-400"></FaTrash>
+              </button>
+            )}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
     </div>
   );
 };

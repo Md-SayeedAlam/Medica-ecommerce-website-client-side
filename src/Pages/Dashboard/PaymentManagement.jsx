@@ -65,29 +65,29 @@ const PaymentManagement = () => {
         <div>
               <div className="flex justify-center gap-5 my-5">
                 <h2 className="text-xl">All Payments</h2>
-                <h2 className="text-xl">Total Payments:{payments.length}</h2>
+                <h2 className="text-xl">Total Payments :{payments.length}</h2>
               </div>
-              <div className="overflow-x-auto">
-                <table className="table table-zebra w-full">
+              <div className="w-full min-h-screen">
+                <table className="table-auto w-full border border-gray-200">
                   {/* head */}
                   <thead>
                     <tr>
-                      <th>No.</th>
-                      <th>Trans.Id</th>
-                      <th>Email</th>
-                      <th>Status</th>
-                      <th>Change Status</th>
-                      <th>Action</th>
+                      <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">No.</th>
+                      <th className="px-0 py-1 text-center text-xs font-semibold border border-gray-200 max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">Trans.Id</th>
+                      <th className="px-0 py-1 text-center text-xs font-semibold border border-gray-200 max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">Email</th>
+                      <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">Status</th>
+                      <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">Change Status</th>
+                      <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     {payments.map((user, idx) => (
                       <tr key={user._id}>
-                        <th>{idx + 1} </th>
-                        <td>{user.transactionId}</td>
-                        <td>{user.email} </td>
-                        <td>{user.status} </td>
-                        <td>
+                        <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">{idx + 1} </th>
+                        <td  className="px-0 py-1 text-xs border border-gray-200 text-center break-words max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">{user.transactionId}</td>
+                        <td  className="px-0 py-1 text-xs border border-gray-200 text-center break-words max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">{user.email} </td>
+                        <td className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">{user.status} </td>
+                        <td className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">
                           {user.status === "paid" ? (
                             "paid"
                           ) : (
@@ -97,7 +97,7 @@ const PaymentManagement = () => {
                               name=""
                               id=""
                               disabled={user.status === "paid"}
-                              className="px-2 py-1 rounded-md "
+                              className="px-1 py-1 rounded-md "
                             >
                                 <option value="paid">Pending</option>
                               <option value="paid">Paid</option>
