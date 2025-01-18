@@ -5,6 +5,7 @@ import useAxiosSecure from "../../Hookos/useAxiosSecure";
 import { useForm } from "react-hook-form";
 import Loading from "../../Components/Loading";
 import UseAuth from "../../Hookos/UseAuth";
+import { Helmet } from "react-helmet-async";
 
 // ImgBB API setup
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -99,6 +100,9 @@ const ManageCategories = () => {
   if(loading) return <Loading></Loading>
   return (
     <div>
+        <Helmet>
+              <title>Manage Category || Medica</title>
+            </Helmet>
       <h2 className="text-xl text-center my-4">Manage Categories</h2>
       <div className="flex justify-center items-center my-4">
         <button

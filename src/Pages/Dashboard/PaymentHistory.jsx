@@ -9,6 +9,7 @@ import "jspdf-autotable";
 import useAxiosPublic from '../../Hookos/useAxiosPublic';
 import Swal from 'sweetalert2';
 import Loading from '../../Components/Loading';
+import { Helmet } from 'react-helmet-async';
 const PaymentHistory = () => {
 
 
@@ -90,7 +91,9 @@ console.log(users)
 
     return (
         <div className='my-5'>
-          
+            <Helmet>
+                  <title>Payment History || Medica</title>
+                </Helmet>
        <div className='flex flex-col justify-center items-center gap-2'>
        <img className='w-10 rounded-full' src="/medica-logo.avif" alt="" />
        <h2 className="text-2xl text-center uppercase">Total Payments:{payments.length} </h2>

@@ -6,6 +6,7 @@ import UseAuth from "../../Hookos/UseAuth";
 import { FaTrash } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hookos/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -83,6 +84,9 @@ const ManageMedicines = () => {
 
   return (
     <div>
+        <Helmet>
+              <title>Manage Medicine || Medica</title>
+            </Helmet>
       <h2 className="text-xl text-center my-4">Manage Medicines</h2>
       <div className="flex justify-center items-center my-4">
         <button

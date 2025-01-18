@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import UseAuth from "../../Hookos/UseAuth";
 import Loading from "../../Components/Loading";
+import { Helmet } from "react-helmet-async";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -81,7 +82,11 @@ if(isLoading) return <Loading></Loading>
 
   return (
     <div>
+        <Helmet>
+              <title>Manage Users || Medica</title>
+            </Helmet>
       <div className="flex justify-center gap-5 my-5">
+
         <h2 className="text-xl">All Users</h2>
         <h2 className="text-xl">Total Users :{users.length}</h2>
       </div>

@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import Loading from '../../Components/Loading';
+import { Helmet } from 'react-helmet-async';
 
 const PaymentManagement = () => {
 
@@ -63,6 +64,9 @@ const PaymentManagement = () => {
 
     return (
         <div>
+            <Helmet>
+                  <title>Payment Management || Medica</title>
+                </Helmet>
               <div className="flex justify-center gap-5 my-5">
                 <h2 className="text-xl">All Payments</h2>
                 <h2 className="text-xl">Total Payments :{payments.length}</h2>

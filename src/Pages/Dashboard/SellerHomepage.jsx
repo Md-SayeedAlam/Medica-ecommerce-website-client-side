@@ -4,6 +4,7 @@ import UseAuth from '../../Hookos/UseAuth';
 import Loading from '../../Components/Loading';
 import { FaDollarSign } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 const SellerHomepage = () => {
 
@@ -25,6 +26,9 @@ const SellerHomepage = () => {
       console.log(user.email)
     return (
         <div className='flex flex-col justify-center items-center gap-5 mt-10'>
+              <Helmet>
+                    <title>Seller Home || Medica</title>
+                  </Helmet>
                   <h2 className="text-3xl"><span > Hi Welcome</span></h2>
                   <h2 className='text-2xl mt-5'>{user?.displayName ? user.displayName : "Back"}</h2>
       

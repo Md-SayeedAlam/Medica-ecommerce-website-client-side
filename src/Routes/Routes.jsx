@@ -83,7 +83,7 @@ import UpdateProfile from "../Pages/Register & Login/UpdateProfile";
         },
         {
             path:'/updateProfile',
-            element:<UpdateProfile></UpdateProfile>
+            element:<PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
         },
        
       ]

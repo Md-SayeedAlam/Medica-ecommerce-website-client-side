@@ -5,6 +5,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import useCart from '../../Hookos/useCart';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const ChekoutForm = () => {
 
@@ -119,6 +120,9 @@ const ChekoutForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
+            <Helmet>
+                  <title>Check Out || Medica</title>
+                </Helmet>
         <CardElement
           options={{
             style: {

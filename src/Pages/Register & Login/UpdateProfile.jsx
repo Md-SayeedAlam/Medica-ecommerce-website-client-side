@@ -2,6 +2,7 @@ import React from 'react';
 import UseAuth from '../../Hookos/UseAuth';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateProfile = () => {
 
@@ -50,6 +51,9 @@ const UpdateProfile = () => {
 
     return (
         <div className="flex flex-row justify-center items-center mt-10 mb-10">
+              <Helmet>
+                    <title>Update Profile || Medica</title>
+                  </Helmet>
         <div className="card  bg-base-100 w-96 shadow-xl h-full">
            <h2 className="text-2xl font-bold text-center">My Profile</h2>
          <figure className="px-10 pt-10">
@@ -61,7 +65,7 @@ const UpdateProfile = () => {
          </figure>
          <div className="card-body items-center text-center">
            <h2 className="card-title">Name : {user?.displayName}</h2>
-           <p>Email : {user.email}</p>
+           <p>Email : {user?.email}</p>
            <form onSubmit={handleSubmit} className="card-body">
              <div className="form-control">
                <label className="label">

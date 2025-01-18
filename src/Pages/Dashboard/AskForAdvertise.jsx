@@ -3,6 +3,7 @@ import UseAuth from "../../Hookos/UseAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hookos/useAxiosSecure";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const AskForAdvertise = () => {
   const axiosSecure = useAxiosSecure();
@@ -48,6 +49,9 @@ const AskForAdvertise = () => {
 
   return (
     <div>
+          <Helmet>
+                <title>Ask Advertise || Medica</title>
+              </Helmet>
         <h2 className="text-lg text-center font-bold my-4">Ask For Advertisement</h2>
     
     <div className="overflow-auto w-full">

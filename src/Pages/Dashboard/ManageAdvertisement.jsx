@@ -3,6 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hookos/useAxiosSecure";
 import Loading from "../../Components/Loading";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const ManageAdvertise = () => {
   const axiosSecure = useAxiosSecure();
@@ -37,6 +38,9 @@ const ManageAdvertise = () => {
 
   return (
     <div>
+        <Helmet>
+              <title>Manage Advertise || Medica</title>
+            </Helmet>
       <h2 className="text-lg font-semibold my-4 text-center">Manage Advertisements</h2>
       <div className="overflow-auto px-4">
         <table className="table-auto w-full border border-gray-200">

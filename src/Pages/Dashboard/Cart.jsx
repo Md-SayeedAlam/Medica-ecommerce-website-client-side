@@ -6,6 +6,7 @@ import { FaTrash } from "react-icons/fa";
 import useCart from "../../Hookos/useCart";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -68,6 +69,9 @@ const Cart = () => {
 
   return (
     <div>
+        <Helmet>
+              <title>Cart || Medica</title>
+            </Helmet>
       <div className="flex gap-4 items-center justify-center my-8">
         <h2 className="text-xl">Total Order: {cart.length}</h2>
         <h2 className="text-xl">Total Price: ${totalPrice.toFixed(2)}</h2>

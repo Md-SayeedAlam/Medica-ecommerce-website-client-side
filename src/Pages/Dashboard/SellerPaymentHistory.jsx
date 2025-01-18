@@ -3,6 +3,7 @@ import useAxiosSecure from '../../Hookos/useAxiosSecure';
 import UseAuth from '../../Hookos/UseAuth';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../Components/Loading';
+import { Helmet } from 'react-helmet-async';
 
 const SellerPaymentHistory = () => {
 
@@ -31,6 +32,9 @@ const SellerPaymentHistory = () => {
 
     return (
         <div>
+            <Helmet>
+                  <title>Seller Payment History || Medica</title>
+                </Helmet>
         <h2 className='text-xl text-center my-5'>Purchase History</h2>
         <div className='w-full overflow-auto min-h-screen'>
       

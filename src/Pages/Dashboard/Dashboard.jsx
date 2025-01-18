@@ -16,6 +16,7 @@ import { RiAdvertisementLine } from "react-icons/ri";
 import useAdmin from "../../Hookos/useAdmin";
 import useSeller from "../../Hookos/useSeller";
 import "./Dashboard.css";
+
 const Dashboard = () => {
   const [cart] = useCart();
   const [isAdmin] = useAdmin();
@@ -23,6 +24,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-col lg:flex-row ">
+        
       {/* dashboard side bar */}
       <div className="w-full lg:w-64  h-full lg:min-h-screen bg-gray-200 ">
 

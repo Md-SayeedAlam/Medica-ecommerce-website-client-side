@@ -6,6 +6,7 @@ import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import Loading from "../../Components/Loading";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const SalesReport = () => {
   const axiosSecure = useAxiosSecure();
@@ -59,6 +60,9 @@ const SalesReport = () => {
 
   return (
     <div className="p-4">
+        <Helmet>
+              <title>Sells Report || Medica</title>
+            </Helmet>
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 my-5">
         <div className="flex gap-3 items-center">
