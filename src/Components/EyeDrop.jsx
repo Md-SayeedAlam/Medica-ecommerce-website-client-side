@@ -46,7 +46,8 @@ const EyeDrop = () => {
                       unit_price,
                       discount,
                       company,
-                      unit
+                      unit,
+                      quantity: 1,
       
                   }
       

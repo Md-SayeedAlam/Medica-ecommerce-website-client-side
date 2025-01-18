@@ -24,7 +24,11 @@ const Dashboard = () => {
     <div className="flex flex-col lg:flex-row ">
       {/* dashboard side bar */}
       <div className="w-full lg:w-64  h-full lg:min-h-screen bg-gray-200 ">
-        <h2 className="text-center mt-5">Medica Pharma</h2>
+
+        <div className="flex flex-col justify-center items-center rounded-full mt-5 gap-2">
+          <img className="w-10" src='/medica-logo.avif' alt="" />
+          <h2 className="text-center mt-5">Medica Pharma</h2>
+        </div>
 
         <ul className="menu">
           {/* Admin Dashboard */}

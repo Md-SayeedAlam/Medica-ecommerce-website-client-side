@@ -17,7 +17,7 @@ const Shop = () => {
     const {user} = UseAuth()
     const [,refetch] = useCart()
     const axiosSecure = useAxiosSecure()
-    
+    console.log(categories)
           const [selectedItem, setSelectedItem] = useState(null); // To store the selected item
           const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
         
@@ -33,6 +33,7 @@ const Shop = () => {
         
           const handleAddToCart = item =>{
             const {name,generic_name,category,company,unit,image,unit_price,discount,description,_id} = item
+           
            if(user && user.email){
             
             const cartItem = {
@@ -43,10 +44,11 @@ const Shop = () => {
                 unit_price,
                 discount,
                 company,
-                unit
+                unit,
+                quantity: 1,
 
             }
-
+           
             axiosSecure.post('/carts',cartItem)
             .then(res=>{
                 // console.log(res.data)
