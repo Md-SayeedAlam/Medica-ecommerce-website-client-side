@@ -76,7 +76,7 @@ const AllUsers = () => {
     });
   };
 
-if(loading) return <Loading></Loading>
+if(isLoading) return <Loading></Loading>
  
 
   return (
@@ -85,7 +85,7 @@ if(loading) return <Loading></Loading>
         <h2 className="text-xl">All Users</h2>
         <h2 className="text-xl">Total Users :{users.length}</h2>
       </div>
-      <div className="w-full min-h-screen">
+      <div className="w-full overflow-auto min-h-screen">
   <table className="table-auto w-full border border-gray-200">
     {/* head */}
     <thead>

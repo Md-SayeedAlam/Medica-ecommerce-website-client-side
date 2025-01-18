@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useMedicineCategory from '../Hookos/useMedicineCategory';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { Helmet } from 'react-helmet-async';
@@ -9,15 +9,80 @@ import Swal from 'sweetalert2';
 
 import useAxiosSecure from '../Hookos/useAxiosSecure';
 import useCart from '../Hookos/useCart';
+import useAxiosPublic from '../Hookos/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
+import Loading from './Loading';
+
 
 const Shop = () => {
-    const [categories] = useMedicineCategory()
+    // const [categories] = useMedicineCategory()
+
     const location = useLocation()
     const navigate = useNavigate()
-    const {user} = UseAuth()
+    const {user,loading} = UseAuth()
     const [,refetch] = useCart()
     const axiosSecure = useAxiosSecure()
-    console.log(categories)
+
+    const axiosPublic = useAxiosPublic()
+
+    const [search, setSearch] = useState("");
+    const [sort, setSort] = useState("");
+  
+ const [categories,setCategories] = useState([])
+
+ 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
+
+    // const {data:categories=[],isLoading}=useQuery({
+    //     queryKey:['categories',{search,sort}],
+      
+    //     queryFn: async ()=>{
+    //         const res = await axiosPublic.get(`/medicine/search/sort?search=${search}&sort=${sort}`)
+            
+    //         return res.data
+            
+    //     },
+        
+    
+    // })
+
+    useEffect(() => {
+      const foodsItem = async () => {
+        try {
+          const response = await fetch(
+            `http://localhost:5000/medicine/search/sort?search=${search}&sort=${sort}`,
+            {
+              method: "GET",
+              headers: {
+                "content-type": "application/json",
+              },
+            }
+          );
+          
+          const data = await response.json();
+          setCategories(data);
+        } catch (error) {
+          // console.log("Error fetching foods:", error);
+        }
+      };
+  
+      foodsItem();
+    }, [search, sort]);
+
+
+
+
+    const totalItems = categories.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentItems = categories.slice(startIndex, endIndex);
+
+
+
+   
           const [selectedItem, setSelectedItem] = useState(null); // To store the selected item
           const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
         
@@ -86,7 +151,7 @@ const Shop = () => {
           }
 
 
-
+if(loading) return <Loading></Loading>
 
 
     return (
@@ -95,6 +160,65 @@ const Shop = () => {
           <title>Shop||Medica</title>
         </Helmet>
   <h2 className="text-3xl text-center mb-3">All Medicines</h2>
+
+
+
+  <div className="flex flex-col lg:flex-row gap-5 mt-10 mb-10  lg:mx-10 ">
+        <div className="w-full lg:w-1/2">
+          <label className="input input-bordered flex items-center gap-2">
+            <input
+              onChange={(e) => setSearch(e.target.value)}
+              type="text"
+              className="grow"
+              placeholder="Search Here By Foods Name"
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="h-4 w-4 opacity-70"
+            >
+              <path
+                fillRule="evenodd"
+                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                clipRule="evenodd"
+              />
+            </svg>
+
+            {/* <button  className="px-2 py-1 rounded-md bg-amber-400">Search</button> */}
+
+        
+
+
+
+
+          </label>
+        </div>
+
+        <div className="w-full lg:w-1/2">
+          <select
+          defaultValue={'Sort By Price'}
+          onChange={(e) => setSort(e.target.value)}
+            name="category"
+            id="category"
+            className="border p-[11px] rounded-md pr-[148px] lg:pr-[250px]"
+          >
+            <option  value="">Sort By Price</option>
+            <option value="dsc">Descending Order</option>
+            <option value="asc">Ascending Order</option>
+          </select>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
   <div className="w-full min-h-screen">
     <table className="table-auto w-full border border-gray-200">
       <thead>
@@ -123,11 +247,11 @@ const Shop = () => {
         </tr>
       </thead>
       <tbody>
-        {categories && categories.length > 0 ? (
-          categories.map((item, index) => (
+        {currentItems && currentItems.length > 0 ? (
+          currentItems.map((item, index) => (
             <tr key={item._id}>
               <td className="px-0 py-1 text-xs border border-gray-200 text-center">
-                {index + 1}
+                {startIndex+index + 1}
               </td>
               <td className="px-0 py-1 border border-gray-200">
                 <img
@@ -172,6 +296,37 @@ const Shop = () => {
         )}
       </tbody>
     </table>
+
+
+
+
+    <div className="flex justify-center mt-5">
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+            className="btn btn-sm bg-sky-400 text-white"
+          >
+            Previous
+          </button>
+          <span className="mx-4">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+            className="btn btn-sm bg-green-400 text-white "
+          >
+            Next
+          </button>
+        </div>
+
+
+
+
+
+
+
+
   </div>
 
   {/* Modal */}
