@@ -29,8 +29,10 @@ const ManageAdvertise = () => {
 
  
   return (
-    <div className="px-4 overflow-auto">
-      <h2 className="text-lg font-semibold my-4 text-center">Manage Banner Advertise</h2>
+   <div>
+    <h2 className="text-lg font-semibold my-4 text-center">Manage Banner Advertise</h2>
+     <div className="px-4 overflow-auto">
+      
       {isLoading ? (
         <Loading></Loading>
       ) : (
@@ -71,6 +73,7 @@ const ManageAdvertise = () => {
         </table>
       )}
     </div>
+   </div>
   );
 };
 

@@ -1,54 +1,41 @@
-import { useEffect } from "react";
+
 import axios from "axios";
-import UseAuth from "./UseAuth";
+
 import { useNavigate } from "react-router-dom";
+import UseAuth from "./UseAuth";
 
 const axiosSecure = axios.create({
   baseURL: "http://localhost:5000", // Update with your base URL
 });
 
 const useAxiosSecure = () => {
-  const navigate = useNavigate();
-  const { logOut } = UseAuth();
+  const navigate = useNavigate()
+  const{logOut}=UseAuth()
 
-  useEffect(() => {
-    // Request Interceptor
-    const requestInterceptor = axiosSecure.interceptors.request.use(
-      (config) => {
-        const token = localStorage.getItem("ACCESS TOKEN");
-        if (token) {
-          config.headers.authorization = `Bearer ${token}`;
-        }
-        return config;
-      },
-      (error) => Promise.reject(error)
-    );
+  axiosSecure.interceptors.request.use(function(config){
+      const token = localStorage.getItem('ACCESS TOKEN')
+      // console.log('request stopped by interceptors',token)
+      config.headers.authorization= `Bearer ${token}`
+      return config;
+  },
+  function(error){
+      return Promise.reject(error)
+  }
+)
 
-    // Response Interceptor
-    const responseInterceptor = axiosSecure.interceptors.response.use(
-      (response) => response,
-      async (error) => {
-        const status = error.response?.status;
-
-        if (status === 401 || status === 403) {
-          try {
-            await logOut(); // Properly log out the user
-            navigate("/login", { replace: true }); // Navigate to login page
-          } catch (err) {
-            console.error("Error during logout:", err);
-          }
-        }
-
-        return Promise.reject(error);
-      }
-    );
-
-    // Cleanup interceptors on component unmount
-    return () => {
-      axiosSecure.interceptors.request.eject(requestInterceptor);
-      axiosSecure.interceptors.response.eject(responseInterceptor);
-    };
-  }, [logOut, navigate]);
+// intercepts 401 and 403 status
+axiosSecure.interceptors.response.use(function(response){
+  return response
+},async(error)=>{
+  const status = error.response.status
+  console.log('status error',status)
+  // for 401 or 403 logout the user and move the user to the login page
+  if(status === 401 ||403 ){
+      await logOut()
+      navigate("/login", { replace: true });
+  }
+  return Promise.reject(error)
+})
 
   return axiosSecure;
 };

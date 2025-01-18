@@ -67,7 +67,7 @@ const PaymentManagement = () => {
                 <h2 className="text-xl">All Payments</h2>
                 <h2 className="text-xl">Total Payments :{payments.length}</h2>
               </div>
-              <div className="w-full min-h-screen">
+              <div className="w-full overflow-auto min-h-screen">
                 <table className="table-auto w-full border border-gray-200">
                   {/* head */}
                   <thead>
@@ -76,7 +76,7 @@ const PaymentManagement = () => {
                       <th className="px-0 py-1 text-center text-xs font-semibold border border-gray-200 max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">Trans.Id</th>
                       <th className="px-0 py-1 text-center text-xs font-semibold border border-gray-200 max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">Email</th>
                       <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">Status</th>
-                      <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">Change Status</th>
+                      <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">Change Status(Accept Payment)</th>
                       <th className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">Action</th>
                     </tr>
                   </thead>
@@ -108,7 +108,7 @@ const PaymentManagement = () => {
                             </select>
                           )}
                         </td>
-                        <td>
+                        <td className="px-1 py-1 text-center text-xs font-semibold border border-gray-200">
                           {user.status === "paid" ? (
                             <button disabled className="p-4 hover:bg-red-200">
                               <FaTrash className="text-red-400 "></FaTrash>
