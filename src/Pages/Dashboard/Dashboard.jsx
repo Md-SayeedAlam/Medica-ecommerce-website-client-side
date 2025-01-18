@@ -91,7 +91,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/advertise">
+                <NavLink to="/dashboard/askForAdvertise">
                   <RiAdvertisementLine /> Ask For Advertisement
                 </NavLink>
               </li>

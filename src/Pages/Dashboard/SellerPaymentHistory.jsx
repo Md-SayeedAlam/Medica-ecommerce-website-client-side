@@ -60,7 +60,7 @@ const SellerPaymentHistory = () => {
           </tbody>
         </table>
       ) : (
-        <p>No purchase history available.</p>
+        <p className='text-red-400 text-xl text-center mt-5'>No purchase history available for {user.displayName}.</p>
       )}
     </div>
     </div>

@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import Loading from "../../Components/Loading";
+import toast from "react-hot-toast";
 
 const SalesReport = () => {
   const axiosSecure = useAxiosSecure();
@@ -47,6 +48,13 @@ const SalesReport = () => {
     });
 
     doc.save("SalesReport.pdf");
+
+    toast.success("File Downloaded successfully!", {
+      position: "top-right",
+      autoClose: 2000,
+    });
+    
+   
   };
 
   return (
@@ -77,7 +85,7 @@ const SalesReport = () => {
           onClick={exportToPDF}
           className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-700"
         >
-          Export PDF
+          Download PDF
         </button>
       </div>
 

@@ -75,7 +75,7 @@ const  from = location.state?.from?.pathname || '/'
       console.log(result.user);
   
       toast.success("Login successful", {
-        position: "top-center",
+        position: "top-right",
         autoClose: 2000,
       });
   
