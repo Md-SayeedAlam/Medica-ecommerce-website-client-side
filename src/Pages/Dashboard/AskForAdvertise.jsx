@@ -48,7 +48,7 @@ const AskForAdvertise = () => {
 
   return (
     <div>
-        <h2 className="text-lg text-center font-bold mb-4">Ask For Advertisement</h2>
+        <h2 className="text-lg text-center font-bold my-4">Ask For Advertisement</h2>
     
     <div className="overflow-auto w-full">
       

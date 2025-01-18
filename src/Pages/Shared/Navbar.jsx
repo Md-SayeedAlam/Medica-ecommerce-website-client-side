@@ -6,10 +6,11 @@ import useCart from "../../Hookos/useCart";
 import "./Navbar.css";
 import useAdmin from "../../Hookos/useAdmin";
 import useSeller from "../../Hookos/useSeller";
+import Loading from "../../Components/Loading";
 const Navbar = () => {
   const [cart] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.unit_price, 0);
-  const { user, logOut } = UseAuth();
+  const { user, logOut,loading } = UseAuth();
   const [isAdmin] = useAdmin();
   const [isSeller] = useSeller();
   const handleLogOut = () => {
@@ -79,6 +80,8 @@ const Navbar = () => {
     </>
   );
 
+if(loading) return <Loading></Loading>
+
   return (
     <div className="navbar bg-base-200  sticky top-0 z-10">
       <div className="navbar-start">
@@ -111,9 +114,9 @@ const Navbar = () => {
           src="/medica-logo.avif"
           alt="medica"
         />
-        <a className="btn btn-ghost text-xl hover:bg-green-200  lg:text-green-500">
+        <Link to='/' className="btn btn-ghost text-xl hover:bg-green-200  lg:text-green-500">
           Medica
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-1">{list}</ul>
@@ -196,7 +199,7 @@ const Navbar = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                 >
                   <li>
-                    <Link className="justify-between">
+                    <Link to='/updateProfile' className="justify-between">
                       Update Profile
                       {/* <span className="badge">New</span> */}
                     </Link>

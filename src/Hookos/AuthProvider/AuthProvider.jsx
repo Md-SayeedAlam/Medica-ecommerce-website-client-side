@@ -9,6 +9,7 @@ const AuthProvider = ({children}) => {
     const axiosPublic = useAxiosPublic()
     const [user,setUser] = useState(null)
     const [loading,setLoading] = useState(true)
+    const[isUpdating,setUpdating]=useState(false)
     const googleProvider = new GoogleAuthProvider()
 
     const createUser =(email,password)=>{
@@ -51,7 +52,8 @@ const authInfo ={
     signIn,
     logOut,
     updateUserProfile,
-    googleSignIn
+    googleSignIn,
+    setUpdating,
 }
 
 useEffect(()=>{
@@ -81,7 +83,7 @@ useEffect(()=>{
     return()=>{
         unsubscribe()
     }
-},[axiosPublic])
+},[axiosPublic,isUpdating])
 
 
 

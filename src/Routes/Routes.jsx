@@ -32,6 +32,7 @@ import SalesReport from "../Pages/Dashboard/SalesReport";
 import ManageAdvertise from "../Pages/Dashboard/ManageAdvertisement";
 import SellerPaymentHistory from "../Pages/Dashboard/SellerPaymentHistory";
 import AskForAdvertise from "../Pages/Dashboard/AskForAdvertise";
+import UpdateProfile from "../Pages/Register & Login/UpdateProfile";
 
 
  export const router = createBrowserRouter([
@@ -79,6 +80,10 @@ import AskForAdvertise from "../Pages/Dashboard/AskForAdvertise";
         {
             path:'/login',
             element:<Login></Login>
+        },
+        {
+            path:'/updateProfile',
+            element:<UpdateProfile></UpdateProfile>
         },
        
       ]

@@ -2,8 +2,9 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../../Hookos/useCart";
 import { FiShoppingCart } from "react-icons/fi";
-import { FaCalendar, FaHome } from "react-icons/fa";
+import { FaCalendar, FaHome, FaUsers } from "react-icons/fa";
 import {
+  MdCategory,
   MdOutlinePayments,
   MdOutlineRateReview,
   MdOutlineReport,
@@ -43,12 +44,12 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/users">
-                  <MdOutlineRateReview /> Manage Users
+                  <FaUsers /> Manage Users
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/manageCategory">
-                  <GiMedicines /> Manage Category
+                <MdCategory /> Manage Category
                 </NavLink>
               </li>
               <li>
