@@ -52,7 +52,7 @@ const Shop = () => {
       const foodsItem = async () => {
         try {
           const response = await fetch(
-            `http://localhost:5000/medicine/search/sort?search=${search}&sort=${sort}`,
+            `https://medica-server-side.vercel.app/medicine/search/sort?search=${search}&sort=${sort}`,
             {
               method: "GET",
               headers: {

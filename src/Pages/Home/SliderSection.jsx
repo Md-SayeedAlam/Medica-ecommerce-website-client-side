@@ -21,7 +21,7 @@ console.log(advertise)
 
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/medicine")
+  //   fetch("https://medica-server-side.vercel.app/medicine")
   //     .then((res) => res.json())
   //     .then((data) => setSlides(data))
   //     .catch((err) => console.error("Error fetching slides:", err));

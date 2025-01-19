@@ -7,7 +7,7 @@ const useMedicineCategory = () => {
     // const [loading,setLoading] = useState(true)
    
     // useEffect(()=>{
-    //     fetch('http://localhost:5000/medicine')
+    //     fetch('https://medica-server-side.vercel.app/medicine')
     //     .then(res=>res.json())
     //     .then(data=>{
     //         setCategories(data)
