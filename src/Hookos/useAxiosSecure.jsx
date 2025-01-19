@@ -4,7 +4,8 @@ import UseAuth from "./UseAuth";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  baseURL: "https://medica-server-side.vercel.app", // Update with your base URL
+  baseURL: "https://medica-server-side.vercel.app", 
+  withCredentials:true
 });
 
 const useAxiosSecure = () => {
