@@ -33,6 +33,19 @@
 
 
 
+## ADMIN EMAIL : admin@admin.com
+## ADMIN PASSWORD : 123456Ll*
+
+## SELLER EMAIL : lalasowrav@gmail.com
+## SELLER PASSWORD : 123456Ll*
+
+## USER EMAIL : ko@ko.com
+## USER PASSWORD : 123456Ll*
+
+
+
+
+
 
 
 ## GITHUB REPOSITORY LINK (CLIENT SIDE) : https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Md-SayeedAlam
@@ -45,4 +58,4 @@
 
 ## LIVE lINK: NETLIFY:  https://medica-pharma.netlify.app/
 
-## LIVE LINK : surge : 
+## LIVE LINK : surge : https://medica-pharma-by-sayeed.surge.sh/
