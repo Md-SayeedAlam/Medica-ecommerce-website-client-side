@@ -3,7 +3,7 @@ Here’s the `README.md` for **MEDICA**, formatted in the style you requested:
 ---
 
 # 🏥 **MEDICA**  
-![MEDICA Banner](./Screenshot_7.png)
+![MEDICA Banner](./public/Screenshot_7.png)
 
 MEDICA is a modern, dynamic e-commerce platform designed for purchasing medicines online. It offers a seamless user experience with secure authentication, efficient medicine management, and intuitive dashboards for sellers and administrators. With features like private routes, real-time notifications, integrated payments, and advanced search & sort functionalities, MEDICA ensures a smooth and reliable healthcare shopping experience for all users.  
 
@@ -71,7 +71,7 @@ MEDICA is a modern, dynamic e-commerce platform designed for purchasing medicine
 ### **Steps**  
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/your-username/medica.git
+   git clone https://github.com/Md-SayeedAlam/Medica-ecommerce-website-client-side.git
    cd medica
    ```  
 2. **Install Dependencies**  
