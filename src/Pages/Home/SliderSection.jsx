@@ -11,7 +11,7 @@ const SliderSection = () => {
   const [categories] = useMedicineCategory()
 
 const advertise = categories.filter(category=>category.advertise === true)
-console.log(advertise)
+// console.log(advertise)
   // useEffect(() => {
   //   setSlides(categories);
   // }, [categories]);

@@ -60,7 +60,7 @@ const Card = ({item}) => {
       }).then((result) => {
         if (result.isConfirmed) {
         // send the user to the login page
-        navigate("/login", { state: { from: location } });
+        navigate("/login");
        
         }
       });                                                                   

@@ -12,10 +12,14 @@ import {
 } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 
+
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+     
+
+      
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <HelmetProvider>
@@ -26,5 +30,6 @@ createRoot(document.getElementById("root")).render(
         </HelmetProvider>
       </QueryClientProvider>
     </AuthProvider>
+
   </StrictMode>
 );
