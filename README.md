@@ -51,7 +51,7 @@ MEDICA is a modern, dynamic e-commerce platform designed for purchasing medicine
 | **State Management** | React Query                               |
 | **Forms**            | React Hook Form                           |
 | **Routing**          | React Router DOM                          |
-| **Backend**          | Firebase (Authentication, Firestore)      |
+| **Backend**          | Firebase (Authentication, Firestore) ,MongoDb, ExpressJs  |
 | **Payments**         | Stripe                                    |
 | **Notifications**    | React Hot Toast, SweetAlert2              |
 | **PDF Generation**   | jsPDF, jsPDF-AutoTable                    |
