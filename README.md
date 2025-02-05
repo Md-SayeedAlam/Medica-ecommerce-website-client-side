@@ -10,7 +10,7 @@ MEDICA is a modern, dynamic e-commerce platform designed for purchasing medicine
 ---
 
 ## 🚀 **Live Demo**  
-[Live Site: MEDICA](#) *(Add your live link here)*  
+[Live Site: MEDICA](#) *(https://medica-store-d867a.web.app/)*  
 
 ---
 
