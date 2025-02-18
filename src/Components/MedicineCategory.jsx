@@ -19,7 +19,7 @@ import useMedicineCategory from "../Hookos/useMedicineCategory";
 const MedicineCategory = () => {
 
     const [categories] = useMedicineCategory()
-
+    const [hovered, setHovered] = useState(null);
     const capsule = categories.filter(item=>item.category === 'capsule')
     const eyedrop = categories.filter((item) => item.category === "eyedrop");
     const injection = categories.filter((item) => item.category === "injection");
@@ -74,16 +74,18 @@ const MedicineCategory = () => {
         
         
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link  to='/capsule'>
+            <Link   to='/capsule'>
             <div className="p-4 bg-gray-100 shadow-md rounded-lg text-center h-96">
             
             <img className="w-full h-64 object-cover" src={capsulE} alt="capsule" />
               <h3 className="text-lg font-semibold my-1">Capsule</h3>
-              <p>Quantity : {capsule.length}</p>
+              {/* <p>Quantity : {capsule.length}</p> */}
               <p>
               Explore our wide range of capsules for your health needs.
               </p>
               
+              <Link to='/capsule'><button className="btn btn-xs hover:bg-green-200 bg-green-100 text-green-500">See More</button></Link>
+
             </div>
             </Link >
           
@@ -91,8 +93,9 @@ const MedicineCategory = () => {
             <div className="p-4 bg-gray-100 shadow-md rounded-lg text-center h-96" >
             <img className="w-full h-64 object-cover" src={eyeDrop} alt="eyeDrop" />
               <h3 className="text-lg font-semibold my-1">Eye Drop</h3>
-              <p>Quantity : {eyedrop.length}</p>
+              {/* <p>Quantity : {eyedrop.length}</p> */}
               <p>Discover top-quality eye drops for your care.</p>
+              <Link to='/eyedrop'><button className="btn btn-xs hover:bg-green-200 mt-[25px] bg-green-100 text-green-500">See More</button></Link>
             </div>
             </Link>
 
@@ -100,8 +103,10 @@ const MedicineCategory = () => {
          <div className="p-4 bg-gray-100 shadow-md rounded-lg text-center h-96">
             <img className="w-full h-64 object-cover" src={injectioN} alt="injection" />
               <h3 className="text-lg font-semibold my-1">Injection</h3>
-              <p>Quantity : {injection.length}</p>
+              {/* <p>Quantity : {injection.length}</p> */}
               <p>Shop various injections for different treatments.</p>
+              <Link to='/injection'><button className="btn btn-xs hover:bg-green-200 bg-green-100 text-green-500">See More</button></Link>
+
             </div>
          </Link>
 
@@ -109,10 +114,11 @@ const MedicineCategory = () => {
            <div className="p-4 bg-gray-100 shadow-md rounded-lg text-center h-96">
             <img className="w-full h-64 object-cover" src={syruP} alt="Syrup" />
               <h3 className="text-lg font-semibold my-1">Syrup</h3>
-              <p>Quantity : {syrup.length}</p>
+              {/* <p>Quantity : {syrup.length}</p> */}
               <p>
               Find syrups for all kinds of health needs
               </p>
+              <Link to='/syrup'><button className="btn btn-xs hover:bg-green-200 mt-[25px] bg-green-100 text-green-500">See More</button></Link>
             </div>
            </Link>
 
@@ -121,10 +127,11 @@ const MedicineCategory = () => {
             <img className="w-full h-64 object-cover" src={tablets} alt="tablets" />
 
               <h3 className="text-lg font-semibold my-1">Tablets</h3>
-              <p>Quantity : {tablet.length}</p>
+              {/* <p>Quantity : {tablet.length}</p> */}
               <p>
               Check out our collection of essential tablets.
               </p>
+              <Link to='/tablet'><button className="btn btn-xs hover:bg-green-200 mt-[25px] bg-green-100 text-green-500">See More</button></Link>
             </div>
             </Link>
 
@@ -134,8 +141,9 @@ const MedicineCategory = () => {
             <div className="p-4 bg-gray-100 shadow-md rounded-lg text-center h-96">
             <img className="w-full h-64 object-cover" src={vitamiN} alt="vitamin" />
               <h3 className="text-lg font-semibold my-1">Vitamins</h3>
-              <p>Quantity : {vitamin.length}</p>
+              {/* <p>Quantity : {vitamin.length}</p> */}
               <p>Get the best vitamins to support your daily health.</p>
+              <Link to='/vitamin'><button className="btn btn-xs hover:bg-green-200  bg-green-100 text-green-500">See More</button></Link>
             </div>
             </Link>
 
