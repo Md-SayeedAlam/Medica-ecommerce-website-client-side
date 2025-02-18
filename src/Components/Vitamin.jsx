@@ -88,7 +88,7 @@ const Vitamin = () => {
 
         
     return (
-        <div className="flex flex-col gap-4 justify-center items-center mt-6 p-3">
+        <div className="flex flex-col gap-4 justify-center items-center mt-6 p-3 container mx-auto">
               <Helmet>
                      <title>Vitamin || Medica</title>
                 </Helmet>
