@@ -33,6 +33,7 @@ import ManageAdvertise from "../Pages/Dashboard/ManageAdvertisement";
 import SellerPaymentHistory from "../Pages/Dashboard/SellerPaymentHistory";
 import AskForAdvertise from "../Pages/Dashboard/AskForAdvertise";
 import UpdateProfile from "../Pages/Register & Login/UpdateProfile";
+import Profile from "../Components/Profile";
 
 
  export const router = createBrowserRouter([
@@ -104,6 +105,10 @@ import UpdateProfile from "../Pages/Register & Login/UpdateProfile";
             {
                 path:'paymentHistory',
                 element:<PaymentHistory></PaymentHistory>
+            },
+            {
+                path:'profile',
+                element:<Profile></Profile>
             },
 
 

@@ -16,6 +16,7 @@ import { RiAdvertisementLine } from "react-icons/ri";
 import useAdmin from "../../Hookos/useAdmin";
 import useSeller from "../../Hookos/useSeller";
 import "./Dashboard.css";
+import { AiOutlineProfile } from "react-icons/ai";
 
 const Dashboard = () => {
   const [cart] = useCart();
@@ -44,6 +45,13 @@ const Dashboard = () => {
                   <FaHome /> Admin Home
                 </NavLink>
               </li>
+
+              <li>
+                <NavLink to="/dashboard/profile">
+                  <AiOutlineProfile /> Profile
+                </NavLink>
+              </li>
+
               <li>
                 <NavLink to="/dashboard/users">
                   <FaUsers /> Manage Users
@@ -92,6 +100,15 @@ const Dashboard = () => {
                   <FaHome /> Seller Home
                 </NavLink>
               </li>
+
+              <li>
+                <NavLink to="/dashboard/profile">
+                  <AiOutlineProfile /> Profile
+                </NavLink>
+              </li>
+
+
+
               <li>
                 <NavLink to="/dashboard/manageMedicine">
                   <GiMedicines /> Manage Medicines
@@ -130,6 +147,13 @@ const Dashboard = () => {
                   <MdOutlinePayments /> Payment History
                 </NavLink>
               </li>
+
+              <li>
+                <NavLink to="/dashboard/profile">
+                  <AiOutlineProfile /> Profile
+                </NavLink>
+              </li>
+
               <li>
                 <NavLink to="/dashboard/myCart">
                   <FiShoppingCart /> My Cart ({cart.length})

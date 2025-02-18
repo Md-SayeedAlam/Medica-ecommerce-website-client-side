@@ -7,6 +7,7 @@ import "./Navbar.css";
 import useAdmin from "../../Hookos/useAdmin";
 import useSeller from "../../Hookos/useSeller";
 import Loading from "../../Components/Loading";
+import Theme from "../../Components/Theme";
 const Navbar = () => {
   const [cart] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.unit_price, 0);
@@ -55,13 +56,9 @@ const Navbar = () => {
         </NavLink>
       </li>
 
-      <li>
-        <NavLink
-        //  className={({ isActive }) =>
-        //     isActive ? "bg-green-200 text-green-500 " : "text-black bg-gray-300"
-        //   }
-        >
-          {/* language dropdown */}
+      {/* <li>
+        <NavLink >
+       
 
           <div className="dropdown dropdown-right">
             <div tabIndex={0} role="button" className="">
@@ -76,7 +73,8 @@ const Navbar = () => {
             </ul>
           </div>
         </NavLink>
-      </li>
+      </li> */}
+
     </>
   );
 
@@ -128,6 +126,7 @@ if(loading) return <Loading></Loading>
           {/* Cart and User logo */}
 
           <div className="navbar-end">
+          <Theme></Theme>
             <div className="flex justify-center items-center">
               <div className="dropdown dropdown-end">
                 <div
@@ -233,6 +232,7 @@ if(loading) return <Loading></Loading>
       ) : (
         <>
           <div className="navbar-end">
+            <Theme></Theme>
             <Link
               to="/login"
               className="btn border-green-500 hover:bg-green-200 bg-green-100 text-green-500 rounded-full"

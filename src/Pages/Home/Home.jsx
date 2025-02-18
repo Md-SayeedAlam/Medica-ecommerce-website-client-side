@@ -52,7 +52,7 @@ const Home = () => {
 
       {/* why choose us section */}
 
-      <div className="bg-white py-12">
+      <div className=" py-12">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Why Choose Us?</h2>
           <p className="text-gray-600 mb-10">
@@ -140,7 +140,7 @@ const Home = () => {
         <div className="container mx-auto text-center">
           <h2 className="text-2xl font-bold mb-4">Benefits of Using Medica</h2>
 
-          <p className="text-left space-y-3">
+          <p className="text-center lg:text-left space-y-3">
             Medica is an online pharmacy that provides a convenient and
             affordable way to access medication. It offers many benefits for
             customers, such as:{" "}
