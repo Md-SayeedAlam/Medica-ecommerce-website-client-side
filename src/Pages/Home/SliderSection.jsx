@@ -52,7 +52,7 @@ const advertise = categories.filter(category=>category.advertise === true)
 
           <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-30 text-white">
             <h3 className="text-3xl font-bold">{slide.name}</h3>
-            <p className="text-lg mt-2 text-center">{slide.description}</p>
+            <p className="text-lg mt-2 text-center w-[80%]">{slide.description}</p>
           </div>
         </div>
            

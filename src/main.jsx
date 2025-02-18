@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")).render(
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <HelmetProvider>
-          <div className="container mx-auto">
+          <div >
             <RouterProvider router={router} />
             <Toaster />
           </div>

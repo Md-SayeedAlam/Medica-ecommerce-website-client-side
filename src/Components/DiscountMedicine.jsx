@@ -14,7 +14,7 @@ const DiscountMedicine = () => {
   
 
     return (
-        <div>
+        <div className='container mx-auto'>
             <Swiper
        slidesPerView={1} // Default for small screens
        spaceBetween={16}
