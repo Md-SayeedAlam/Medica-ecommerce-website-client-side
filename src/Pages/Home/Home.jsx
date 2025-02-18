@@ -11,8 +11,25 @@ import { Helmet } from "react-helmet-async";
 import MedicineCategory from "../../Components/MedicineCategory";
 import DiscountMedicine from "../../Components/DiscountMedicine";
 import SliderSection from "./SliderSection";
+import Swal from "sweetalert2";
+
+
+
+
 
 const Home = () => {
+
+const handleNews=()=>{
+   Swal.fire({
+                position: "center",
+                icon: "success",
+                title: `Email has been sent successfully`,
+                showConfirmButton: false,
+                timer: 1500
+              });
+}
+
+
   return (
     <div className="">
       <Helmet>
@@ -123,7 +140,7 @@ const Home = () => {
               placeholder="Enter your email"
               className="px-4 py-2 w-full max-w-md border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300"
             />
-            <button className="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 transition">
+            <button onClick={handleNews} className="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 transition">
               Subscribe
             </button>
           </div>
