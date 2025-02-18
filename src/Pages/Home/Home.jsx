@@ -124,6 +124,22 @@ const handleNews=()=>{
         </div>
       </div>
 
+
+    {/* Best Selling Medicines */}
+    <section className="my-10 py-10 bg-gray-50">
+      <div className="container mx-auto text-center">
+
+      <h2 className="text-2xl font-bold mb-4">Best Selling Medicines</h2>
+
+
+      <strong className=" text-green-500">Sergel 20 mg Capsule  | Napa 500 mg Tablet | Ceevit 250 mg Chewable Tablet | Monas 10 10 mg Tablet | Pantonix 20 mg Tablet | Ecosprin 75 mg Tablet | Fexo 120 mg Tablet | Atova 10 mg Tablet | Bizoran 5 mg+20 mg Tablet | Thyrox 50 mcg Tablet | Rosuva 10 mg Tablet | Napa Extend 665 mg Tablet | Maxpro 20 mg Tablet | Bislol 2.5 mg Tablet | Neuro-B Tablet | Uromax 0.4 mg Capsule | Omidon 10 mg Tablet | Osartil 50 mg Tablet | Linaglip 5 mg Tablet | Clopid 75 mg Tablet</strong>
+      </div>
+    </section>
+
+
+
+
+
       {/* extra newsletter section */}
 
       <div className="bg-gray-50 py-10 mb-2">
