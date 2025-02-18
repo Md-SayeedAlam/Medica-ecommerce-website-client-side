@@ -7,28 +7,21 @@ import twenty from "../../../public/twenty.jpg";
 
 import { Helmet } from "react-helmet-async";
 
-
 import MedicineCategory from "../../Components/MedicineCategory";
 import DiscountMedicine from "../../Components/DiscountMedicine";
 import SliderSection from "./SliderSection";
 import Swal from "sweetalert2";
 
-
-
-
-
 const Home = () => {
-
-const handleNews=()=>{
-   Swal.fire({
-                position: "center",
-                icon: "success",
-                title: `Email has been sent successfully`,
-                showConfirmButton: false,
-                timer: 1500
-              });
-}
-
+  const handleNews = () => {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: `Email has been sent successfully`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
 
   return (
     <div className="">
@@ -58,7 +51,7 @@ const handleNews=()=>{
       </div>
 
       {/* why choose us section */}
-      
+
       <div className="bg-white py-12">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Why Choose Us?</h2>
@@ -124,15 +117,89 @@ const handleNews=()=>{
         </div>
       </div>
 
+      {/* Best Selling Medicines */}
+      <section className="my-10 py-10 ">
+        <div className="container mx-auto text-center">
+          <h2 className="text-2xl font-bold mb-4">Best Selling Medicines</h2>
 
-    {/* Best Selling Medicines */}
-    <section className="my-10 py-10 bg-gray-50">
-      <div className="container mx-auto text-center">
+          <strong className=" text-green-500">
+            Sergel 20 mg Capsule | Napa 500 mg Tablet | Ceevit 250 mg Chewable
+            Tablet | Monas 10 10 mg Tablet | Pantonix 20 mg Tablet | Ecosprin 75
+            mg Tablet | Fexo 120 mg Tablet | Atova 10 mg Tablet | Bizoran 5
+            mg+20 mg Tablet | Thyrox 50 mcg Tablet | Rosuva 10 mg Tablet | Napa
+            Extend 665 mg Tablet | Maxpro 20 mg Tablet | Bislol 2.5 mg Tablet |
+            Neuro-B Tablet | Uromax 0.4 mg Capsule | Omidon 10 mg Tablet |
+            Osartil 50 mg Tablet | Linaglip 5 mg Tablet | Clopid 75 mg Tablet
+          </strong>
+        </div>
+      </section>
 
-      <h2 className="text-2xl font-bold mb-4">Best Selling Medicines</h2>
+      {/* Benefits of Using Medica Section */}
 
+      <section className="my-10 py-10 ">
+        <div className="container mx-auto text-center">
+          <h2 className="text-2xl font-bold mb-4">Benefits of Using Medica</h2>
 
-      <strong className=" text-green-500">Sergel 20 mg Capsule  | Napa 500 mg Tablet | Ceevit 250 mg Chewable Tablet | Monas 10 10 mg Tablet | Pantonix 20 mg Tablet | Ecosprin 75 mg Tablet | Fexo 120 mg Tablet | Atova 10 mg Tablet | Bizoran 5 mg+20 mg Tablet | Thyrox 50 mcg Tablet | Rosuva 10 mg Tablet | Napa Extend 665 mg Tablet | Maxpro 20 mg Tablet | Bislol 2.5 mg Tablet | Neuro-B Tablet | Uromax 0.4 mg Capsule | Omidon 10 mg Tablet | Osartil 50 mg Tablet | Linaglip 5 mg Tablet | Clopid 75 mg Tablet</strong>
+          <p className="text-left space-y-3">
+            Medica is an online pharmacy that provides a convenient and
+            affordable way to access medication. It offers many benefits for
+            customers, such as:{" "}
+            <p className="pt-2">1. Easy and convenient access to health care services.</p>{" "}
+            <p>2. Comprehensive database of health care providers.</p>{" "}
+            <p>3. 24/7 customer service and support.</p>{" "}
+            <p> 4. Secure and user-friendly platform.</p>{" "}
+            <p>
+              5. Discounts and deals to make health care services more
+              affordable.{" "}
+            </p>{" "}
+            <p>6. Access to health records and medical advice. </p>{" "}
+            <p>7. Fast and reliable delivery of medicines. </p>{" "}
+            <p>8. Professional and experienced health care professionals.</p>{" "}
+            <p>9. Access to reliable information on health and wellness.</p>
+          </p>
+        </div>
+      </section>
+
+    {/* Delivery Services */}
+      <section className="shadow-lg rounded-lg my-10 py-5">
+      <h2 className="text-2xl text-center font-bold text-gray-800 mb-4">Delivery Services</h2>
+     
+      <div className="overflow-x-auto container mx-auto">
+      <p className="text-gray-600 mb-4 text-center">
+        Our delivery services are tailored to your needs. We provide regular delivery within 4 hours
+        of order acceptance. For faster service, our Urgent Delivery ensures delivery within 45 minutes.
+      </p>
+        <table className="w-full border-collapse border border-gray-300">
+          <thead className="bg-gray-200">
+            <tr>
+              <th className="border border-gray-300 px-4 py-2 text-left">Delivery Type</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Estimated Delivery Time</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="bg-white">
+              <td className="border border-gray-300 px-4 py-2">Urgent Delivery</td>
+              <td className="border border-gray-300 px-4 py-2">45 minutes</td>
+              <td className="border border-gray-300 px-4 py-2">BDT 130/=</td>
+            </tr>
+            <tr className="bg-gray-50">
+              <td className="border border-gray-300 px-4 py-2">Regular Delivery</td>
+              <td className="border border-gray-300 px-4 py-2">2 hours - 4 hours</td>
+              <td className="border border-gray-300 px-4 py-2">BDT 130/=</td>
+            </tr>
+            <tr className="bg-white">
+              <td className="border border-gray-300 px-4 py-2">Next Day Delivery</td>
+              <td className="border border-gray-300 px-4 py-2">24 hours - 36 hours</td>
+              <td className="border border-gray-300 px-4 py-2">BDT 60/=</td>
+            </tr>
+            <tr className="bg-gray-50">
+              <td className="border border-gray-300 px-4 py-2">Courier Delivery (outside Dhaka city)</td>
+              <td className="border border-gray-300 px-4 py-2">2 to 5 working days</td>
+              <td className="border border-gray-300 px-4 py-2">BDT 110/=</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -142,7 +209,7 @@ const handleNews=()=>{
 
       {/* extra newsletter section */}
 
-      <div className="bg-gray-50 py-10 mb-2">
+      <div className=" py-10 mb-2">
         <div className="container mx-auto text-center">
           <h2 className="text-2xl font-bold mb-4">
             Subscribe to Our Newsletter
@@ -156,7 +223,10 @@ const handleNews=()=>{
               placeholder="Enter your email"
               className="px-4 py-2 w-full max-w-md border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300"
             />
-            <button onClick={handleNews} className="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 transition">
+            <button
+              onClick={handleNews}
+              className="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 transition"
+            >
               Subscribe
             </button>
           </div>
